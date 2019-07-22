@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ProductionScheduler.UserControls.PressButtonDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProductionScheduler.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Text="{Binding Press, StringFormat='Press: {0}'}" />
+            <TextBlock
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Text="{Binding Part, StringFormat='Part Number: {0}'}" />
+            <TextBlock
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Text="{Binding Mold, StringFormat='Mold: {0}'}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
