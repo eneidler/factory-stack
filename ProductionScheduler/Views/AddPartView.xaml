@@ -1,0 +1,111 @@
+﻿<Window x:Class="ProductionScheduler.Views.AddPartView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductionScheduler.Views"
+        mc:Ignorable="d"
+        Style="{StaticResource windowStyle}"
+        Title="Add New Part Number" Height="450" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Content="Add New Part Number&#10;     to the System:"
+               HorizontalContentAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="0 20 0 0"
+               FontFamily="Arial"
+               FontSize="24"/>
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Content="Part Number:"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="14"/>
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Content="Product Family:"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="14"/>
+        <Label Grid.Row="3"
+               Grid.Column="0"
+               Content="Product Description:"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="14"/>
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Content="Cure Time (Min):"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="14"/>
+        <Label Grid.Row="5"
+               Grid.Column="0"
+               Content="Associated Molds:"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="14"/>
+
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 x:Name="PartNumberTextbox"
+                 Margin="10"/>
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 x:Name="ProductFamilyTextbox"
+                 Margin="10"/>
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 x:Name="ProductDescriptionTextbox"
+                 Margin="10"/>
+        <TextBox Grid.Row="4"
+                 Grid.Column="1"
+                 x:Name="CureTimeTextbox"
+                 Margin="10"/>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <ComboBox x:Name="PartNumberMoldsCombobox"
+                      Width="200"
+                      Margin="10 10 10 10"/>
+            <Button x:Name="AddAssociatedMoldButton"
+                    Content="+"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Width="30"
+                    Height="30"/>
+        </StackPanel>
+
+        <Button x:Name="AddNewButton"
+                Content="Add New"
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="15"
+                Width="100"
+                Style="{StaticResource controlButtonsStyle}"/>
+
+
+    </Grid>
+</Window>
