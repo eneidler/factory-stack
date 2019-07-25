@@ -61,7 +61,7 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"/>
                 <TextBlock 
-                       Text="{Binding AccessLevel, Source={x:Static services:ViewStateManager.Instance}, StringFormat='AccessLevel: {0}'}"
+                       Text="{Binding AccessLevel, Source={x:Static services:ViewStateManager.Instance}, StringFormat='Access Level: {0}'}"
                        FontSize="18"
                        Foreground="{StaticResource miscDarkText}"
                        HorizontalAlignment="Right"
@@ -117,7 +117,7 @@
                     ToolTip="Create a new job in the system and add it to the schedule."
                     IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                     Command=""
-                    Style="{StaticResource controlButtonsStyle}"
+                    Style="{StaticResource controlButtonsStyle}"                  
                     Content="New Job"
                     FontSize="18"
                     Height="50"
