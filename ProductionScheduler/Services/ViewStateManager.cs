@@ -1,7 +1,7 @@
 ﻿using ProductionScheduler.Interfaces;
 using ProductionScheduler.Models.UserLogin;
-using ProductionScheduler.Services;
 using ProductionScheduler.ViewModels;
+using ProductionScheduler.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ProductionScheduler.Models
+namespace ProductionScheduler.Services
 {
     public sealed class ViewStateManager : BaseViewModel
     {

@@ -6,6 +6,7 @@
         xmlns:view="clr-namespace:ProductionScheduler.Views"
         xmlns:model="clr-namespace:ProductionScheduler.Models"
         xmlns:viewModel ="clr-namespace:ProductionScheduler.ViewModels"
+        xmlns:services="clr-namespace:ProductionScheduler.Services"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
@@ -98,13 +99,13 @@
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="ContentTemplate" Value="{StaticResource UserLoginTemplate}" /><!--HACK: Toggle for view testing-->
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static model:ViewStateManager.Instance}}" Value="0">
+                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static services:ViewStateManager.Instance}}" Value="0">
                                 <Setter Property="ContentTemplate" Value="{StaticResource UserLoginTemplate}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static model:ViewStateManager.Instance}}" Value="1">
+                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static services:ViewStateManager.Instance}}" Value="1">
                                 <Setter Property="ContentTemplate" Value="{StaticResource PressDisplayTemplate}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static model:ViewStateManager.Instance}}" Value="2">
+                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static services:ViewStateManager.Instance}}" Value="2">
                                 <Setter Property="ContentTemplate" Value="{StaticResource JobDisplayTemplate}"/>
                             </DataTrigger>
                         </Style.Triggers>

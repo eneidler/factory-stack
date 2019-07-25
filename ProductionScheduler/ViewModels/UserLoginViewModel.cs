@@ -16,7 +16,6 @@ namespace ProductionScheduler.ViewModels
 
         private string _loginUsername;
         private string _loginPassword;
-        private AccessLevels _accessLevel;
         private ICommand _loginCommand;
 
         public UserLoginViewModel()

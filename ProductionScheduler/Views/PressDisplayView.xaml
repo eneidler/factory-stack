@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:ProductionScheduler.Views"
              xmlns:model="clr-namespace:ProductionScheduler.Models"
+             xmlns:services="clr-namespace:ProductionScheduler.Services"
              xmlns:userControl="clr-namespace:ProductionScheduler.UserControls"
              xmlns:viewModel="clr-namespace:ProductionScheduler.ViewModels"
              mc:Ignorable="d" 
@@ -54,13 +55,13 @@
         <StackPanel Grid.Column="1"
                     Margin="0 0 0 0">
                 <TextBlock 
-                       Text="{Binding CurrentUser, Source={x:Static model:ViewStateManager.Instance}, StringFormat='Username: {0}'}"
+                       Text="{Binding CurrentUser, Source={x:Static services:ViewStateManager.Instance}, StringFormat='Username: {0}'}"
                        FontSize="18"
                        Foreground="{StaticResource miscDarkText}"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"/>
                 <TextBlock 
-                       Text="{Binding AccessLevel, Source={x:Static model:ViewStateManager.Instance}, StringFormat='AccessLevel: {0}'}"
+                       Text="{Binding AccessLevel, Source={x:Static services:ViewStateManager.Instance}, StringFormat='AccessLevel: {0}'}"
                        FontSize="18"
                        Foreground="{StaticResource miscDarkText}"
                        HorizontalAlignment="Right"
@@ -94,7 +95,7 @@
                     HorizontalAlignment="Center">
             <Button x:Name="AddNewPressButton"
                     ToolTip="Add a new press to the database."
-                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                     Command=""
                     Style="{StaticResource controlButtonsStyle}"
                     Content="New Press"
@@ -104,7 +105,7 @@
                     Margin="10 0"/>
             <Button x:Name="AddNewMoldButton"
                     ToolTip="Add a new mold to the database for a new part number."
-                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                     Command=""
                     Style="{StaticResource controlButtonsStyle}"
                     Content="New Mold"
@@ -114,7 +115,7 @@
                     Margin="10 0"/>
             <Button x:Name="AddNewJobButton"
                     ToolTip="Create a new job in the system and add it to the schedule."
-                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                     Command=""
                     Style="{StaticResource controlButtonsStyle}"
                     Content="New Job"
@@ -141,7 +142,7 @@
                     HorizontalAlignment="Right">
             <Button x:Name="LogoutButton"
                     ToolTip="Return to the main login screen."
-                    Command="{Binding LogoutCommand, Source={x:Static model:ViewStateManager.Instance}}"
+                    Command="{Binding LogoutCommand, Source={x:Static services:ViewStateManager.Instance}}"
                     Style="{StaticResource controlButtonsStyle}"
                     Content="Logout"
                     FontSize="18"

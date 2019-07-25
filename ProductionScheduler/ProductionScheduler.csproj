@@ -80,7 +80,7 @@
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
     <Compile Include="Models\ViewOptions.cs" />
-    <Compile Include="Models\ViewStateManager.cs" />
+    <Compile Include="Services\ViewStateManager.cs" />
     <Compile Include="Services\JobManager.cs" />
     <Compile Include="UserControls\PressButtonDisplay.xaml.cs">
       <DependentUpon>PressButtonDisplay.xaml</DependentUpon>
