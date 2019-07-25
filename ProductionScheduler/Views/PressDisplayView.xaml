@@ -93,6 +93,16 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
+            <Button x:Name="AddNewPartButton"
+                    ToolTip="Add a new part to the database."
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
+                    Command="{Binding AddPartWindowCommand}"
+                    Style="{StaticResource controlButtonsStyle}"
+                    Content="New Part"
+                    FontSize="18"
+                    Height="50"
+                    Width="150"
+                    Margin="10 0"/>
             <Button x:Name="AddNewPressButton"
                     ToolTip="Add a new press to the database."
                     IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"

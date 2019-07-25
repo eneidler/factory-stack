@@ -130,17 +130,14 @@ namespace ProductionScheduler.Services
 
         public void LogoutCurrentUser()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "FactoryStack.IO Logout", MessageBoxButton.YesNoCancel);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "FactoryStack.IO Logout", MessageBoxButton.OKCancel);
             switch (result)
             {
-                case MessageBoxResult.Yes:
+                case MessageBoxResult.OK:
                     SwitchView = (int)ViewOptions.LoginView;
                     break;
-                case MessageBoxResult.No:
-
-                    break;
                 case MessageBoxResult.Cancel:
-
+                    //Do nothing
                     break;
             }
                     

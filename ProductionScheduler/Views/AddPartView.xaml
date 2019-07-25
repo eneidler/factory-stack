@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ProductionScheduler.Views"
         mc:Ignorable="d"
         Style="{StaticResource windowStyle}"
-        Title="Add New Part Number" Height="450" Width="400">
+        Title="Add New Part Number" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -97,15 +98,26 @@
                     Height="30"/>
         </StackPanel>
 
-        <Button x:Name="AddNewButton"
-                Content="Add New"
-                Grid.Row="6"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="15"
-                Width="100"
-                Style="{StaticResource controlButtonsStyle}"/>
-
+        <StackPanel Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="AddNewButton"
+                    Content="Add New"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="15"
+                    Width="100"
+                    Style="{StaticResource controlButtonsStyle}"/>
+            <Button x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Margin="15"
+                    Width="100"
+                    Style="{StaticResource controlButtonsStyle}"/>
+        </StackPanel>
 
     </Grid>
 </Window>
