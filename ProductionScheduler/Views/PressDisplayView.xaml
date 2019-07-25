@@ -40,13 +40,13 @@
                    Content="FactoryStack.IO"
                    HorizontalContentAlignment="Left"
                    Margin="20 0 0 0"
-                   FontSize="42"
-                   FontFamily="Ink Free"
+                   FontSize="50"
+                   FontFamily="Agency FB"
                    FontWeight="Bold"/>
             <Label 
                    Content="Main Press Control Panel | Status &amp; Job Overview"
                    HorizontalContentAlignment="Left"
-                   FontSize="16"
+                   FontSize="12"
                    Margin="20 0 0 0"/>
         </StackPanel>
 
@@ -84,13 +84,65 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource pressDisplayButtonStyle}"/>
+
         
+        <!--Job control buttons on button of Press Display-->
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="AddNewPressButton"
+                    ToolTip="Add a new press to the database."
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    Command=""
+                    Style="{StaticResource controlButtonsStyle}"
+                    Content="New Press"
+                    FontSize="18"
+                    Height="50"
+                    Width="150"
+                    Margin="10 0"/>
+            <Button x:Name="AddNewMoldButton"
+                    ToolTip="Add a new mold to the database for a new part number."
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    Command=""
+                    Style="{StaticResource controlButtonsStyle}"
+                    Content="New Mold"
+                    FontSize="18"
+                    Height="50"
+                    Width="150"
+                    Margin="10 0"/>
+            <Button x:Name="AddNewJobButton"
+                    ToolTip="Create a new job in the system and add it to the schedule."
+                    IsEnabled="{Binding ButtonEnableState, Source={x:Static model:ViewStateManager.Instance}}"
+                    Command=""
+                    Style="{StaticResource controlButtonsStyle}"
+                    Content="New Job"
+                    FontSize="18"
+                    Height="50"
+                    Width="150"
+                    Margin="10 0"/>
+            <Button x:Name="ModifyScheduleButton"
+                    ToolTip="View, modify, or report out the current schedule."
+                    Command=""
+                    Style="{StaticResource controlButtonsStyle}"
+                    Content="Schedule"
+                    FontSize="18"
+                    Height="50"
+                    Width="150"
+                    Margin="10 0"/>
+        </StackPanel>
+
+        
+        <!--Logout button in bottom right of Press Display-->
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Button x:Name="LogoutButton"
+                    ToolTip="Return to the main login screen."
                     Command="{Binding LogoutCommand, Source={x:Static model:ViewStateManager.Instance}}"
+                    Style="{StaticResource controlButtonsStyle}"
                     Content="Logout"
                     FontSize="18"
                     Height="50"

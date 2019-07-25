@@ -19,6 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="4.8*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -32,36 +33,52 @@
         </Grid.RowDefinitions>
 
 
-        <Label Grid.Row="0"
+        <Image Source="E:\00) Glitchd Software\Logos\FactoryStackIO_6.png"
+               HorizontalAlignment="Center"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Height="200"
+               Margin="0 0 0 10"
+               Opacity="90"/>
+
+        <!--
+        <Label Grid.Row="1"
                Grid.RowSpan="2"
                Content="FactoryStack.IO"
                HorizontalContentAlignment="Center"
-               Margin="0 0 0 25"
+               Margin="0 20 0 0"
                FontSize="48"
                FontFamily="Ink Free"
                FontWeight="Bold"/>
-        <Label Grid.Row="1"
+        
+
+
+        <Label Grid.Row="2"
+               Grid.RowSpan="2"
                Content="Introducing a smarter way to manage production."
                HorizontalContentAlignment="Center"
                FontSize="16"
-               Margin="0 10 0 0"/>
-        <TextBlock Grid.Row="2"
+               Margin="0 0 0 50"/>
+        
+        -->
+        
+        <TextBlock Grid.Row="3"
                    Text="Username:"
                    HorizontalAlignment="Left"
                    Margin="62 0 0 0"
                    FontSize="16"/>
-        <TextBox Grid.Row="3"
+        <TextBox Grid.Row="4"
                  Name="UsernameTextbox"
                  VerticalContentAlignment="Center"
                  FontSize="20"
                    Width="360"
                    Height="36"/>
-        <TextBlock Grid.Row="4"
+        <TextBlock Grid.Row="5"
                    Text="Password:"
                    HorizontalAlignment="Left"
                    Margin="62 0 0 0"
                    FontSize="16"/>
-        <PasswordBox Grid.Row="5"
+        <PasswordBox Grid.Row="6"
                  Name="PasswordTextbox"
                  VerticalContentAlignment="Center"
                  FontSize="20"
@@ -69,18 +86,19 @@
                    Height="36"/>
         <Button x:Name="LoginButton"
                 Click="LoginButton_Click"
-                Grid.Row="6"
+                Style="{StaticResource controlButtonsStyle}"
+                Grid.Row="7"
                 Grid.RowSpan="2"
                 Content="Login"
                 Width="100"
                 Height="40"
                 FontSize="16"
                 Margin="0 25 0 0"/>
-        <Label Grid.Row="8"
+        <Label Grid.Row="9"
                Content="FactoryStack.IO is a product of GS Software, A division of Glitchd Studios, ltd."
                HorizontalContentAlignment="Center"
                Margin="0 15 0 0"/>
-        <Label Grid.Row="9"
+        <Label Grid.Row="10"
                Content="Copyright 2019. All rights reserved. Please see Terms of Use / EULA for further information."
                HorizontalContentAlignment="Center"/>
 

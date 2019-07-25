@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
         Style="{StaticResource windowStyle}"
-        Title="FactoryStack.IO | A Smarter Process Control System" Height="900" Width="1440">
+        Title="FactoryStack.IO | Production Control System" Height="900" Width="1440">
 
     <Window.DataContext>
         <viewModel:ProductionGUIViewModel/>

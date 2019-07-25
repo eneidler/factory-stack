@@ -20,6 +20,7 @@ namespace ProductionScheduler.Models
         private string _currentUser;
         private AccessLevels _accessLevel;
         private ICommand _logoutCommand;
+        private bool _buttonEnableState;
 
         private ViewStateManager()
         {
@@ -74,6 +75,24 @@ namespace ProductionScheduler.Models
             set { _accessLevel = value; }
         }
 
+
+        public bool ButtonEnableState
+        {
+            get
+            {
+                if (_accessLevel == AccessLevels.Production)
+                    _buttonEnableState = false;
+                else
+                    _buttonEnableState = true;
+                return _buttonEnableState;
+            }
+            set
+            {
+                _buttonEnableState = value;
+            }
+        }
+
+
         public ICommand LogoutCommand
         {
             get
@@ -83,6 +102,8 @@ namespace ProductionScheduler.Models
             }
 
         }
+
+
 
 
         public void ChangeCurrentView(ViewOptions newView)
