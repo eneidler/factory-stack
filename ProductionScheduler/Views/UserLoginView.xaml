@@ -33,7 +33,7 @@
         </Grid.RowDefinitions>
 
 
-        <Image Source="E:\00) Glitchd Software\Logos\FactoryStackIO_6.png"
+        <Image Source="/Images/FactoryStackIO_6.png"
                HorizontalAlignment="Center"
                Grid.Row="0"
                Grid.RowSpan="3"
