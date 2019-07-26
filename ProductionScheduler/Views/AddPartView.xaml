@@ -81,22 +81,11 @@
                  Grid.Column="1"
                  x:Name="CureTimeTextbox"
                  Margin="10"/>
+        <TextBox x:Name="PartNumberMoldsTextbox"
+                  Grid.Row="5"
+                  Grid.Column="1"
+                  Margin="10"/>
 
-        <StackPanel Grid.Row="5"
-                    Grid.Column="1"
-                    Orientation="Horizontal">
-            <ComboBox x:Name="PartNumberMoldsCombobox"
-                      Width="200"
-                      Margin="10 10 10 10"/>
-            <Button x:Name="AddAssociatedMoldButton"
-                    Content="+"
-                    FontSize="18"
-                    FontWeight="Bold"
-                    VerticalContentAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    Width="30"
-                    Height="30"/>
-        </StackPanel>
 
         <StackPanel Grid.Row="6"
                     Grid.Column="0"
@@ -105,6 +94,7 @@
                     HorizontalAlignment="Center">
             <Button x:Name="AddNewButton"
                     Content="Add New"
+                    Click="AddNewButton_Click"
                     Grid.Row="6"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"

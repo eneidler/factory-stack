@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProductionScheduler.Models;
+using ProductionScheduler.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,5 +40,74 @@ namespace ProductionScheduler.Views
                     break;
             }
         }
+
+        private void AddNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new ProductionSchedulerContext())
+            {
+                var query = from p in context.Parts
+                            where p.PartNumber == PartNumberTextbox.Text
+                            select p;
+
+                var partNumber = query.SingleOrDefault();
+
+
+                if (IsAllTextBoxesNull() == false)
+                {
+                    if (partNumber == null)
+                    {
+                        var part = new Part()
+                        {
+                            PartNumber = PartNumberTextbox.Text,
+                            ProductFamily = ProductFamilyTextbox.Text,
+                            ProductDescription = ProductDescriptionTextbox.Text,
+                            CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
+                            Molds = new List<Mold>
+                            {
+                                new Mold{MoldNumber = PartNumberMoldsTextbox.Text}
+                            }
+                        };
+                        context.Parts.Add(part);
+                        context.SaveChanges();
+
+                        MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                        SetTextBoxesNull();
+                    }
+                    if (partNumber != null)
+                    {
+                        MessageBox.Show("This part number already exists.", "Part entry error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                if (IsAllTextBoxesNull() == false)
+                    MessageBox.Show("A valid part number is required at a minimum. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
+            }          
+        }
+
+        public void SetTextBoxesNull()
+        {
+            PartNumberTextbox.Text = null;
+            ProductFamilyTextbox.Text = null;
+            ProductDescriptionTextbox.Text = null;
+            CureTimeTextbox.Text = null;
+            PartNumberMoldsTextbox.Text = null;
+        }
+
+        public bool IsAllTextBoxesNull()
+        {
+            if(
+            PartNumberTextbox.Text == null &&
+            ProductFamilyTextbox.Text == null &&
+            ProductDescriptionTextbox.Text == null &&
+            CureTimeTextbox.Text == null &&
+            PartNumberMoldsTextbox.Text == null
+            )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }                             
     }
 }
