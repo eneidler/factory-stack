@@ -52,34 +52,35 @@ namespace ProductionScheduler.Views
                 var partNumber = query.SingleOrDefault();
 
 
-                if (IsAllTextBoxesNull() == false)
-                {
+                
                     if (partNumber == null)
                     {
-                        var part = new Part()
+                        if (AreAllTextBoxesNullOrEmpty() == false)
                         {
-                            PartNumber = PartNumberTextbox.Text,
-                            ProductFamily = ProductFamilyTextbox.Text,
-                            ProductDescription = ProductDescriptionTextbox.Text,
-                            CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
-                            Molds = new List<Mold>
+                            var part = new Part()
                             {
-                                new Mold{MoldNumber = PartNumberMoldsTextbox.Text}
-                            }
-                        };
-                        context.Parts.Add(part);
-                        context.SaveChanges();
+                                PartNumber = PartNumberTextbox.Text,
+                                ProductFamily = ProductFamilyTextbox.Text,
+                                ProductDescription = ProductDescriptionTextbox.Text,
+                                CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
+                                Molds = new List<Mold>
+                                    {
+                                        new Mold{MoldNumber = PartNumberMoldsTextbox.Text}
+                                    }
+                            };
+                            context.Parts.Add(part);
+                            context.SaveChanges();
 
-                        MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
-                        SetTextBoxesNull();
-                    }
+                            MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                            SetTextBoxesNull();
+                        }
+                        if (AreAllTextBoxesNullOrEmpty() == true)
+                            MessageBox.Show("A valid part number is required at a minimum. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                     if (partNumber != null)
                     {
                         MessageBox.Show("This part number already exists.", "Part entry error.", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                if (IsAllTextBoxesNull() == false)
-                    MessageBox.Show("A valid part number is required at a minimum. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }             
             }          
         }
 
@@ -92,7 +93,7 @@ namespace ProductionScheduler.Views
             PartNumberMoldsTextbox.Text = null;
         }
 
-        public bool IsAllTextBoxesNull()
+        public bool AreAllTextBoxesNullOrEmpty()
         {
             if(
             PartNumberTextbox.Text == null &&
