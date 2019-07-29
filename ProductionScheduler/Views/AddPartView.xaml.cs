@@ -51,36 +51,35 @@ namespace ProductionScheduler.Views
 
                 var partNumber = query.SingleOrDefault();
 
+                if (AllTextboxesHaveEntries() != true)
+                    MessageBox.Show("All fields are required. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                
+                if (AllTextboxesHaveEntries() == true)
+                {
                     if (partNumber == null)
                     {
-                        if (AreAllTextBoxesNullOrEmpty() == false)
+                        var part = new Part()
                         {
-                            var part = new Part()
-                            {
-                                PartNumber = PartNumberTextbox.Text,
-                                ProductFamily = ProductFamilyTextbox.Text,
-                                ProductDescription = ProductDescriptionTextbox.Text,
-                                CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
-                                Molds = new List<Mold>
+                            PartNumber = PartNumberTextbox.Text,
+                            ProductFamily = ProductFamilyTextbox.Text,
+                            ProductDescription = ProductDescriptionTextbox.Text,
+                            CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
+                            Molds = new List<Mold>
                                     {
                                         new Mold{MoldNumber = PartNumberMoldsTextbox.Text}
                                     }
-                            };
-                            context.Parts.Add(part);
-                            context.SaveChanges();
+                        };
+                        context.Parts.Add(part);
+                        context.SaveChanges();
 
-                            MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
-                            SetTextBoxesNull();
-                        }
-                        if (AreAllTextBoxesNullOrEmpty() == true)
-                            MessageBox.Show("A valid part number is required at a minimum. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                        MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                        SetTextBoxesNull();                      
+                    }                  
                     if (partNumber != null)
                     {
                         MessageBox.Show("This part number already exists.", "Part entry error.", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }             
+                    }
+                }              
             }          
         }
 
@@ -93,22 +92,35 @@ namespace ProductionScheduler.Views
             PartNumberMoldsTextbox.Text = null;
         }
 
-        public bool AreAllTextBoxesNullOrEmpty()
+        public bool AllTextboxesHaveEntries()
         {
             if(
-            PartNumberTextbox.Text == null &&
-            ProductFamilyTextbox.Text == null &&
-            ProductDescriptionTextbox.Text == null &&
-            CureTimeTextbox.Text == null &&
-            PartNumberMoldsTextbox.Text == null
+            PartNumberTextbox.Text == "" ||
+            ProductFamilyTextbox.Text == "" ||
+            ProductDescriptionTextbox.Text == "" ||
+            CureTimeTextbox.Text == "" ||
+            PartNumberMoldsTextbox.Text == ""
             )
-            {
-                return true;
-            }
-            else
             {
                 return false;
             }
-        }                             
+            else
+            {
+                return true;
+            }
+        }
+
+        //HACK: Constrains text input for part number to alpha-numeric characters.
+        private void PartNumberTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            foreach (char c in e.Text)
+            {
+                if (!char.IsLetterOrDigit(c))
+                {
+                    e.Handled = true;
+                    break;
+                }
+            }
+        }
     }
 }

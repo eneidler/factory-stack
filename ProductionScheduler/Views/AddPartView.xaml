@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.75*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -32,7 +32,7 @@
                HorizontalContentAlignment="Center"
                HorizontalAlignment="Center"
                Margin="0 20 0 0"
-               FontFamily="Arial"
+               FontFamily="Berlin Sans FB"
                FontSize="24"/>
         <Label Grid.Row="1"
                Grid.Column="0"
@@ -68,6 +68,7 @@
         <TextBox Grid.Row="1"
                  Grid.Column="1"
                  x:Name="PartNumberTextbox"
+                 PreviewTextInput="PartNumberTextbox_PreviewTextInput"
                  Margin="10"/>
         <TextBox Grid.Row="2"
                  Grid.Column="1"
