@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201907161946469_FixNullFields.Designer.cs">
       <DependentUpon>201907161946469_FixNullFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907291637459_ProductFamilyCategory.cs" />
+    <Compile Include="Migrations\201907291637459_ProductFamilyCategory.Designer.cs">
+      <DependentUpon>201907291637459_ProductFamilyCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
     <Compile Include="Models\ViewOptions.cs" />
@@ -192,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907161946469_FixNullFields.resx">
       <DependentUpon>201907161946469_FixNullFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291637459_ProductFamilyCategory.resx">
+      <DependentUpon>201907291637459_ProductFamilyCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -9,6 +9,7 @@ namespace ProductionScheduler.Models
     class ProductFamily
     {
         public int Id { get; set; }
+        public string ProductFamilyCategory { get; set; }
         public IList<Part> Parts { get; set; }
     }
 }

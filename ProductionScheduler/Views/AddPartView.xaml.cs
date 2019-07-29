@@ -61,7 +61,7 @@ namespace ProductionScheduler.Views
                         var part = new Part()
                         {
                             PartNumber = PartNumberTextbox.Text,
-                            ProductFamily = ProductFamilyTextbox.Text,
+                            ProductFamilyCategory = ProductFamilyTextbox.Text,
                             ProductDescription = ProductDescriptionTextbox.Text,
                             CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
                             Molds = new List<Mold>
