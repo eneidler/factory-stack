@@ -5,8 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProductionScheduler.Views"
         mc:Ignorable="d"
-        Title="AddPressView" Height="450" Width="800">
+        Style="{StaticResource windowStyle}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Add New Press" Height="350" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.35*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.75*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="PressNameTextblock" 
+                   HorizontalAlignment="Right" 
+                   TextWrapping="Wrap" 
+                   Text="Press Name:" 
+                   VerticalAlignment="Center" 
+                   Grid.Row="1" 
+                   Margin="0,0,5,0" 
+                   FontSize="14"/>
+        <TextBlock x:Name="PressCapacityTextblock" 
+                   HorizontalAlignment="Right" 
+                   TextWrapping="Wrap" 
+                   Text="Press Capacity:" 
+                   VerticalAlignment="Center" 
+                   Grid.Row="2" 
+                   Margin="0,0,5,0" 
+                   FontSize="14"/>
+        <Label Content="Add New Press to the Database" 
+               HorizontalAlignment="Center" 
+               Margin="0" 
+               VerticalAlignment="Center" 
+               Grid.ColumnSpan="2"
+               FontFamily="Berlin Sans FB"
+               FontSize="24"/>
+        <TextBox x:Name="PressNameTextbox" 
+                 Grid.Column="1" 
+                 HorizontalAlignment="Center" 
+                 Height="30" 
+                 Margin="0" 
+                 Grid.Row="1" 
+                 TextWrapping="Wrap" 
+                 Text="TextBoxTextBox" 
+                 VerticalAlignment="Center" 
+                 Width="230" 
+                 TextAlignment="Center" 
+                 VerticalContentAlignment="Center"
+                 FontSize="14"/>
+        <TextBox x:Name="PressCapacityTextbox" 
+                 Grid.Column="1" 
+                 HorizontalAlignment="Center" 
+                 Height="30" 
+                 Margin="0" 
+                 Grid.Row="2" 
+                 TextWrapping="Wrap" 
+                 Text="TextBox" 
+                 VerticalAlignment="Center" 
+                 Width="230" 
+                 TextAlignment="Center" 
+                 VerticalContentAlignment="Center"
+                 FontSize="14"/>
+        <StackPanel 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" 
+            Grid.Row="3" 
+            Grid.ColumnSpan="2" 
+            Orientation="Horizontal">
+            <Button x:Name="AddPressButton" 
+                    Style="{StaticResource controlButtonsStyle}" 
+                    Content="Add Press" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="100" 
+                    Height="50" 
+                    Margin="0,0,10,0"/>
+            <Button x:Name="CancelPressAddButton" 
+                    Style="{StaticResource controlButtonsStyle}"
+                    Click="CancelPressAddButton_Click"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="100" 
+                    Margin="10,0,0,0" 
+                    Height="50" 
+                    Content="Cancel"/>
+        </StackPanel>
+
     </Grid>
 </Window>

@@ -29,7 +29,7 @@ namespace ProductionScheduler.Views
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Part", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Part", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
             switch (result)
             {
                 case MessageBoxResult.OK:

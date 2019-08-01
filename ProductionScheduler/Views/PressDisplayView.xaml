@@ -108,7 +108,7 @@
             <Button x:Name="AddNewPressButton"
                     ToolTip="Add a new press to the database."
                     IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
-                    Command=""
+                    Command="{Binding AddPressWindowCommand}"
                     Style="{StaticResource controlButtonsStyle}"
                     Content="New Press"
                     FontSize="18"
