@@ -1,0 +1,81 @@
+﻿<Window
+    x:Class="ProductionScheduler.Views.AboutFactoryStackInfoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProductionScheduler.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="About FactoryStack.IO"
+    Width="500"
+    Height="450"
+    ResizeMode="NoResize"
+    Style="{StaticResource windowStyle}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Margin="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image
+            Grid.RowSpan="2"
+            Width="355.446"
+            Height="187.129"
+            Margin="68.277,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/ProductionScheduler;component/Images/FactoryStackIO_6.png" />
+        <StackPanel
+            Grid.Row="1"
+            Width="450"
+            Height="150"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Label
+                Width="223.66"
+                Height="25.96"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="FactoryStack.IO | Process Control System" />
+            <Label
+                Width="121.514"
+                Height="25.96"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Basic.IO Version 0.1.1" />
+            <Label
+                Width="155.4"
+                Height="25.96"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="© 2019 Glitchd Studios, ltd." />
+            <Label
+                Width="107.906"
+                Height="25.96"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="All rights reserved." />
+            <Label
+                Width="313.824"
+                Height="21.97"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="FactoryStack.IO is a product of GS Software, A division of Glitchd Studios, ltd."
+                FontSize="9" />
+            <Label
+                Width="313.824"
+                Height="21.97"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Content="Please see Terms of Use / EULA for further information."
+                FontSize="9" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -55,19 +55,19 @@ namespace ProductionScheduler.ViewModels
         private void NewAddPartWindow()
         {
             AddPartView addPartView = new AddPartView();
-            addPartView.Show();
+            addPartView.ShowDialog();
         }
 
         private void NewAddPressWindow()
         {
             AddPressView addPressView = new AddPressView();
-            addPressView.Show();
+            addPressView.ShowDialog();
         }
 
         private void NewAddMoldWindow()
         {
             AddMoldView addMoldView = new AddMoldView();
-            addMoldView.Show();
+            addMoldView.ShowDialog();
         }
     }
 }

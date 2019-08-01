@@ -31,5 +31,11 @@ namespace ProductionScheduler.Views
         {
             Environment.Exit(0);
         }
+
+        private void AboutMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            AboutFactoryStackInfoView infoView = new AboutFactoryStackInfoView();
+            infoView.ShowDialog();
+        }
     }
 }

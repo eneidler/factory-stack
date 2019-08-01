@@ -79,6 +79,7 @@
                     <Separator />
                     <MenuItem
                         x:Name="aboutMenuButton"
+                        Click="AboutMenuButton_Click"
                         Foreground="{StaticResource miscDarkText}"
                         Header="_About" />
                 </MenuItem>

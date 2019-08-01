@@ -91,6 +91,9 @@
       <DependentUpon>PressButtonDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UserLoginViewModel.cs" />
+    <Compile Include="Views\AboutFactoryStackInfoView.xaml.cs">
+      <DependentUpon>AboutFactoryStackInfoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddMoldView.xaml.cs">
       <DependentUpon>AddMoldView.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PressButtonDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AboutFactoryStackInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
