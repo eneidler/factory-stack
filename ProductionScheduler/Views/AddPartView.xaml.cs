@@ -1,4 +1,5 @@
-﻿using ProductionScheduler.Models;
+﻿using ProductionScheduler.Interfaces;
+using ProductionScheduler.Models;
 using ProductionScheduler.Services;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ProductionScheduler.Views
     /// <summary>
     /// Interaction logic for AddPartView.xaml
     /// </summary>
-    public partial class AddPartView : Window
+    public partial class AddPartView : Window, ITextValidation
     {
         public AddPartView()
         {
