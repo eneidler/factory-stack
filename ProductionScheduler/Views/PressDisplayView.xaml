@@ -45,9 +45,9 @@
                    FontFamily="Agency FB"
                    FontWeight="Bold"/>
             <Label 
-                   Content="Main Press Control Panel | Status &amp; Job Overview"
+                   Content="Resource Control Panel | Status &amp; Job Overview"
                    HorizontalContentAlignment="Left"
-                   FontSize="12"
+                   FontSize="14"
                    Margin="20 0 0 0"/>
         </StackPanel>
 
