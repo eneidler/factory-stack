@@ -1,12 +1,36 @@
-﻿<Window x:Class="ProductionScheduler.Views.AddMoldView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProductionScheduler.Views"
-        mc:Ignorable="d"
-        Title="AddMoldView" Height="450" Width="800">
-    <Grid>
-        
+﻿<Window
+    x:Class="ProductionScheduler.Views.AddMoldView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Models="clr-namespace:ProductionScheduler.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProductionScheduler.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:ProductionScheduler.ViewModels"
+    Title="AddMoldView"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <CollectionViewSource x:Key="pressViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Press}, CreateList=True}" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource pressViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox
+            x:Name="PressNumberListbox"
+            Width="250"
+            Height="300"
+            DisplayMemberPath="PressNumber"
+            ItemsSource="{Binding}"
+            SelectionMode="Multiple" />
+        <ListBox
+            Grid.Column="1"
+            Width="250"
+            Height="300"
+            ItemsSource="{Binding ElementName=PressNumberListbox, Path=SelectedItems}" />
     </Grid>
 </Window>

@@ -14,11 +14,26 @@ namespace ProductionScheduler.ViewModels
     public sealed class ProductionGUIViewModel : BaseViewModel
     {
 
+        private IList<string> _selectedPresses;
         private ICommand _addPartWindowCommand;
         private ICommand _addPressWindowCommand;
+        private ICommand _addMoldWindowCommand;
 
         public ProductionGUIViewModel()
         {
+        }
+
+        public IList<string> SelectedPresses
+        {
+            get
+            {
+                return _selectedPresses;
+            }
+            set
+            {
+                _selectedPresses = value;
+                NotifyOnPropertyChanged(nameof(SelectedPresses));
+            }
         }
 
         public ICommand AddPartWindowCommand
@@ -29,6 +44,11 @@ namespace ProductionScheduler.ViewModels
         public ICommand AddPressWindowCommand
         {
             get => _addPressWindowCommand = new RelayCommand<object>(_ => NewAddPressWindow());
+        }
+
+        public ICommand AddMoldWindowCommand
+        {
+            get => _addMoldWindowCommand = new RelayCommand<object>(_ => NewAddMoldWindow());
         }
 
 
@@ -42,6 +62,12 @@ namespace ProductionScheduler.ViewModels
         {
             AddPressView addPressView = new AddPressView();
             addPressView.Show();
+        }
+
+        private void NewAddMoldWindow()
+        {
+            AddMoldView addMoldView = new AddMoldView();
+            addMoldView.Show();
         }
     }
 }

@@ -127,7 +127,7 @@
                 Width="150"
                 Height="50"
                 Margin="10,0"
-                Command=""
+                Command="{Binding AddMoldWindowCommand}"
                 Content="New Mold"
                 FontSize="18"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"

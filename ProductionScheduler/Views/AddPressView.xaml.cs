@@ -31,8 +31,8 @@ namespace ProductionScheduler.Views
         {
             using (var context = new ProductionSchedulerContext())
             {
-                var query = from p in context.Parts
-                            where p.PartNumber == PressNameTextblock.Text
+                var query = from p in context.Presses
+                            where p.PressNumber == PressNumberTextbox.Text
                             select p;
 
                 var pressNumber = query.SingleOrDefault();
@@ -46,8 +46,8 @@ namespace ProductionScheduler.Views
                     {
                         var press = new Press()
                         {
-                            PressNumber = PressNameTextblock.Text,
-                            PressCapacity = PressCapacityTextblock.Text,
+                            PressNumber = PressNumberTextbox.Text,
+                            PressCapacity = PressCapacityTextbox.Text,
                         };
                         context.Presses.Add(press);
                         context.SaveChanges();
@@ -79,14 +79,14 @@ namespace ProductionScheduler.Views
 
         public void SetTextBoxesNull()
         {
-            PressNameTextbox.Text = null;
+            PressNumberTextbox.Text = null;
             PressCapacityTextbox.Text = null;
         }
 
         public bool AllTextboxesHaveEntries()
         {
             if (
-            PressNameTextbox.Text == "" ||
+            PressNumberTextbox.Text == "" ||
             PressCapacityTextbox.Text == ""
             )
             {
