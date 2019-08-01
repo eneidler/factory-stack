@@ -65,7 +65,7 @@ namespace ProductionScheduler.Views
 
         private void CancelPressAddButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Part", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Press", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
             switch (result)
             {
                 case MessageBoxResult.OK:
