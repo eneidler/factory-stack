@@ -12,25 +12,61 @@
     Height="450"
     Loaded="Window_Loaded"
     mc:Ignorable="d">
+
+    <Window.DataContext>
+        <viewModel:AddMoldViewModel />
+    </Window.DataContext>
+
     <Window.Resources>
         <CollectionViewSource x:Key="pressViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Press}, CreateList=True}" />
     </Window.Resources>
-    <Grid DataContext="{StaticResource pressViewSource}">
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <ListBox
-            x:Name="PressNumberListbox"
+            x:Name="DatabasePressNumberListbox"
             Width="250"
             Height="300"
             DisplayMemberPath="PressNumber"
-            ItemsSource="{Binding}"
-            SelectionMode="Multiple" />
+            ItemsSource="{Binding Source={StaticResource pressViewSource}}"
+            SelectedValue="{Binding SelectedDatabasePress}"
+            SelectedValuePath="PressNumber"
+            SelectionMode="Single" />
         <ListBox
+            x:Name="ActivePressNumberListbox"
             Grid.Column="1"
             Width="250"
             Height="300"
-            ItemsSource="{Binding ElementName=PressNumberListbox, Path=SelectedItems}" />
+            ItemsSource="{Binding ActiveListPresses}"
+            SelectedValue="{Binding SelectedActivePress}" />
+        <Button
+            Grid.Column="1"
+            Width="80"
+            Height="29"
+            Margin="174,380,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding AddSelectedDatabasePressToActiveListCommand}"
+            Content="Add" />
+        <TextBox
+            Grid.Column="1"
+            Width="110"
+            Height="20"
+            Margin="19,375,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding SelectedDatabasePress}"
+            TextWrapping="Wrap" />
+        <Button
+            Grid.Column="1"
+            Width="75"
+            Margin="284,384,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding RemoveSelectedActivePressCommand}"
+            Content="Remove" />
     </Grid>
 </Window>

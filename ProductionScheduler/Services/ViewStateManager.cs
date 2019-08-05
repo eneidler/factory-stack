@@ -44,10 +44,7 @@ namespace ProductionScheduler.Services
 
         public int SwitchView
         {
-            get
-            {
-                return _switchView;
-            }
+            get => _switchView;
             set
             {
                 _switchView = value;
@@ -60,7 +57,7 @@ namespace ProductionScheduler.Services
 
         public string CurrentUser
         {
-            get { return _currentUser; }
+            get => _currentUser;
             set { _currentUser = value; }
         }
 
@@ -68,10 +65,7 @@ namespace ProductionScheduler.Services
 
         public AccessLevels AccessLevel
         {
-            get
-            {
-                return _accessLevel;
-            }
+            get => _accessLevel;
             set { _accessLevel = value; }
         }
 
@@ -95,12 +89,7 @@ namespace ProductionScheduler.Services
 
         public ICommand LogoutCommand
         {
-            get
-            {
-                _logoutCommand = new RelayCommand<object>(_ => LogoutCurrentUser());
-                return _logoutCommand;
-            }
-
+            get => _logoutCommand = new RelayCommand<object>(_ => LogoutCurrentUser());
         }
 
 
