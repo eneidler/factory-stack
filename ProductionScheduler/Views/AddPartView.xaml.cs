@@ -52,10 +52,10 @@ namespace ProductionScheduler.Views
 
                 var partNumber = query.SingleOrDefault();
 
-                if (AllTextboxesHaveEntries() != true)
+                if (AllFieldsHaveEntries() != true)
                     MessageBox.Show("All fields are required. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (AllTextboxesHaveEntries() == true)
+                if (AllFieldsHaveEntries() == true)
                 {
                     if (partNumber == null)
                     {
@@ -74,7 +74,7 @@ namespace ProductionScheduler.Views
                         context.SaveChanges();
 
                         MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
-                        SetTextBoxesNull();                      
+                        ClearAllFields();                      
                     }                  
                     if (partNumber != null)
                     {
@@ -84,7 +84,7 @@ namespace ProductionScheduler.Views
             }          
         }
 
-        public void SetTextBoxesNull()
+        public void ClearAllFields()
         {
             PartNumberTextbox.Text = null;
             ProductFamilyTextbox.Text = null;
@@ -93,7 +93,7 @@ namespace ProductionScheduler.Views
             PartNumberMoldsTextbox.Text = null;
         }
 
-        public bool AllTextboxesHaveEntries()
+        public bool AllFieldsHaveEntries()
         {
             if(
             PartNumberTextbox.Text == "" ||

@@ -8,7 +8,7 @@ namespace ProductionScheduler.Interfaces
 {
     interface ITextValidation
     {
-        void SetTextBoxesNull();
-        bool AllTextboxesHaveEntries();
+        void ClearAllFields();
+        bool AllFieldsHaveEntries();
     }
 }

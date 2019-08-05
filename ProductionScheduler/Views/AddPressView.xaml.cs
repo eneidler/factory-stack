@@ -37,10 +37,10 @@ namespace ProductionScheduler.Views
 
                 var pressNumber = query.SingleOrDefault();
 
-                if (AllTextboxesHaveEntries() != true)
+                if (AllFieldsHaveEntries() != true)
                     MessageBox.Show("All fields are required. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (AllTextboxesHaveEntries() == true)
+                if (AllFieldsHaveEntries() == true)
                 {
                     if (pressNumber == null)
                     {
@@ -53,7 +53,7 @@ namespace ProductionScheduler.Views
                         context.SaveChanges();
 
                         MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
-                        SetTextBoxesNull();
+                        ClearAllFields();
                     }
                     if (pressNumber != null)
                     {
@@ -77,13 +77,13 @@ namespace ProductionScheduler.Views
             }
         }
 
-        public void SetTextBoxesNull()
+        public void ClearAllFields()
         {
             PressNumberTextbox.Text = null;
             PressCapacityTextbox.Text = null;
         }
 
-        public bool AllTextboxesHaveEntries()
+        public bool AllFieldsHaveEntries()
         {
             if (
             PressNumberTextbox.Text == "" ||

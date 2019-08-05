@@ -7,10 +7,12 @@
     xmlns:local="clr-namespace:ProductionScheduler.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:ProductionScheduler.ViewModels"
-    Title="AddMoldView"
-    Width="800"
+    Title="Add New Mold"
+    Width="450"
     Height="450"
     Loaded="Window_Loaded"
+    Style="{StaticResource windowStyle}"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <Window.DataContext>
@@ -22,14 +24,25 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.35*" />
+            <RowDefinition Height="0.35*" />
+            <RowDefinition Height="0.15*" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
+            <ColumnDefinition Width="0.2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <ListBox
             x:Name="DatabasePressNumberListbox"
-            Width="250"
-            Height="300"
+            Grid.Row="4 "
+            Width="150"
+            Height="100"
+            HorizontalContentAlignment="Center"
             DisplayMemberPath="PressNumber"
             ItemsSource="{Binding Source={StaticResource pressViewSource}}"
             SelectedValue="{Binding SelectedDatabasePress}"
@@ -37,36 +50,144 @@
             SelectionMode="Single" />
         <ListBox
             x:Name="ActivePressNumberListbox"
-            Grid.Column="1"
-            Width="250"
-            Height="300"
+            Grid.Row="4"
+            Grid.Column="2"
+            Width="150"
+            Height="100"
+            HorizontalContentAlignment="Center"
             ItemsSource="{Binding ActiveListPresses}"
             SelectedValue="{Binding SelectedActivePress}" />
-        <Button
+        <StackPanel
+            Grid.Row="4"
             Grid.Column="1"
-            Width="80"
-            Height="29"
-            Margin="174,380,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Command="{Binding AddSelectedDatabasePressToActiveListCommand}"
-            Content="Add" />
+            Width="100"
+            Height="100"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Button
+                x:Name="AddToActiveListButton"
+                Width="35"
+                Height="35"
+                Margin="0,10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding AddSelectedDatabasePressToActiveListCommand}"
+                Content="&gt;"
+                FontSize="20"
+                FontWeight="Bold" />
+            <Button
+                x:Name="RemoveFromActiveListButton"
+                Width="35"
+                Height="35"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding RemoveSelectedActivePressCommand}"
+                Content="&lt;"
+                FontSize="20"
+                FontWeight="Bold" />
+        </StackPanel>
         <TextBox
+            x:Name="MoldNumberTextbox"
+            Grid.Row="1"
             Grid.Column="1"
-            Width="110"
-            Height="20"
-            Margin="19,375,0,0"
+            Grid.ColumnSpan="2"
+            Width="206"
+            Height="30"
+            Margin="10,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="{Binding SelectedDatabasePress}"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
             TextWrapping="Wrap" />
-        <Button
+        <TextBox
+            x:Name="NumberOfCavitiesTextbox"
+            Grid.Row="2"
             Grid.Column="1"
-            Width="75"
-            Margin="284,384,0,0"
+            Grid.ColumnSpan="2"
+            Width="206"
+            Height="30"
+            Margin="10,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Command="{Binding RemoveSelectedActivePressCommand}"
-            Content="Remove" />
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            TextWrapping="Wrap" />
+        <Label
+            Grid.Row="1"
+            Width="132.455"
+            Height="27"
+            Margin="43,0,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Content="Mold Number:" />
+        <Label
+            Grid.Row="2"
+            Width="132.455"
+            Height="25"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Content="Number of Cavities:" />
+        <Label
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Add a New Mold to the Database"
+            FontFamily="Berlin Sans FB"
+            FontSize="24" />
+        <Label
+            Grid.Row="3"
+            Width="125"
+            Height="25"
+            Margin="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Bottom"
+            Content="Available Presses:" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="2"
+            Width="125"
+            Height="25"
+            Margin="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Bottom"
+            Content="Selected Presses:" />
+        <StackPanel
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="AddNewMoldButton"
+                Width="100"
+                Height="40"
+                Margin="15"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="AddNewMoldButton_Click"
+                Content="Add Mold"
+                Style="{StaticResource controlButtonsStyle}" />
+            <Button
+                x:Name="CancelNewMoldButton"
+                Width="100"
+                Height="40"
+                Margin="15"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="CancelNewMoldButton_Click"
+                Content="Cancel"
+                Style="{StaticResource controlButtonsStyle}" />
+        </StackPanel>
     </Grid>
 </Window>
