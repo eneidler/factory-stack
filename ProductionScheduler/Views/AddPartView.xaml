@@ -196,16 +196,35 @@
                 Content="Cancel"
                 Style="{StaticResource controlButtonsStyle}" />
         </StackPanel>
-        <Label
+        <StackPanel
             Grid.Row="5"
-            Width="125"
+            Width="150"
             Height="25"
-            Margin="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            Content="Available Molds:" />
+            Orientation="Horizontal">
+            <Label
+                Width="100"
+                Height="25"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Content="Available Molds:" />
+            <Button
+                x:Name="RefreshMoldListButton"
+                Width="50"
+                Height="25"
+                Margin="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                Click="RefreshMoldListButton_Click"
+                Content="Refresh"
+                FontSize="10"
+                FontWeight="Bold" />
+        </StackPanel>
         <Label
             Grid.Row="5"
             Grid.Column="2"
