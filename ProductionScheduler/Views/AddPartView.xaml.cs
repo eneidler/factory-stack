@@ -3,6 +3,7 @@ using ProductionScheduler.Models;
 using ProductionScheduler.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,21 @@ namespace ProductionScheduler.Views
     /// </summary>
     public partial class AddPartView : Window, ITextValidation
     {
+
+        ProductionSchedulerContext _context = new ProductionSchedulerContext();
+
         public AddPartView()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            CollectionViewSource moldViewSource = ((CollectionViewSource)(this.FindResource("moldViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            _context.Molds.Load();
+            moldViewSource.Source = _context.Presses.Local;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -67,7 +80,7 @@ namespace ProductionScheduler.Views
                             CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
                             Molds = new List<Mold>
                                     {
-                                        new Mold{MoldNumber = PartNumberMoldsTextbox.Text}
+                                        
                                     }
                         };
                         context.Parts.Add(part);
@@ -90,7 +103,6 @@ namespace ProductionScheduler.Views
             ProductFamilyTextbox.Text = null;
             ProductDescriptionTextbox.Text = null;
             CureTimeTextbox.Text = null;
-            PartNumberMoldsTextbox.Text = null;
         }
 
         public bool AllFieldsHaveEntries()
@@ -99,8 +111,7 @@ namespace ProductionScheduler.Views
             PartNumberTextbox.Text == "" ||
             ProductFamilyTextbox.Text == "" ||
             ProductDescriptionTextbox.Text == "" ||
-            CureTimeTextbox.Text == "" ||
-            PartNumberMoldsTextbox.Text == ""
+            CureTimeTextbox.Text == ""
             )
             {
                 return false;
