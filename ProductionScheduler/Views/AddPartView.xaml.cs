@@ -142,7 +142,6 @@ namespace ProductionScheduler.Views
         private void RefreshMoldListButton_Click(object sender, RoutedEventArgs e)
         {
             CollectionViewSource moldViewSource = ((CollectionViewSource)(this.FindResource("moldViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
             _context.Molds.Load();
             moldViewSource.Source = _context.Molds.Local;
         }
