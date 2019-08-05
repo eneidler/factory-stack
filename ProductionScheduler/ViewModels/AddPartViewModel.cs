@@ -1,19 +1,95 @@
-﻿using System;
+﻿using ProductionScheduler.Services;
+using ProductionScheduler.Views;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ProductionScheduler.ViewModels
 {
     class AddPartViewModel : BaseViewModel
     {
-
+        private string _selectedDatabaseMold;
+        private string _selectedActiveMold;
+        private ObservableCollection<string> _activeListMolds = new ObservableCollection<string>();
+        private ICommand _addSelectedDatabaseMoldToActiveListCommand;
+        private ICommand _removeSelectedActiveMoldFromActiveListCommand;
+        private ICommand _addNewMoldToDatabaseCommand;
 
         public AddPartViewModel()
         {
 
         }
 
+        public string SelectedDatabaseMold
+        {
+            get => _selectedDatabaseMold;
+            set
+            {
+                _selectedDatabaseMold = value;
+                NotifyOnPropertyChanged(nameof(SelectedDatabaseMold));
+            }
+        }
+
+        public string SelectedActiveMold
+        {
+            get => _selectedActiveMold;
+            set
+            {
+                _selectedActiveMold = value;
+                NotifyOnPropertyChanged(nameof(SelectedActiveMold));
+            }
+        }
+
+        public ObservableCollection<string> ActiveListMolds
+        {
+            get => _activeListMolds;
+            set
+            {
+                _activeListMolds = value;
+                NotifyOnPropertyChanged(nameof(SelectedDatabaseMold));
+                NotifyOnPropertyChanged(nameof(ActiveListMolds));
+            }
+        }
+
+        public ICommand AddNewMoldToDatabaseCommand
+        {
+            get => _addNewMoldToDatabaseCommand = new RelayCommand<object>(_ => AddNewMoldToDatabase());
+        }
+
+        public ICommand AddSelectedDatabaseMoldToActiveListCommand
+        {
+            get => _addSelectedDatabaseMoldToActiveListCommand = new RelayCommand<object>(_ => AddSelectedDatabaseMoldToActiveList());
+        }
+
+        public ICommand RemoveSelectedActiveMoldFromActiveListCommand
+        {
+            get => _removeSelectedActiveMoldFromActiveListCommand = new RelayCommand<object>(_ => RemoveSelectedActiveMoldFromActiveList());
+        }
+
+        private void AddNewMoldToDatabase()
+        {
+            AddMoldView addMoldView = new AddMoldView();
+            addMoldView.ShowDialog();
+        }
+
+
+        private void AddSelectedDatabaseMoldToActiveList()
+        {
+            if (!_activeListMolds.Contains(_selectedDatabaseMold))
+                _activeListMolds.Add(_selectedDatabaseMold);
+            else
+                MessageBox.Show("This mold is already in your active list!", "Error Adding Mold", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void RemoveSelectedActiveMoldFromActiveList()
+        {
+            _activeListMolds.Remove(_selectedActiveMold);
+        }
     }
 }

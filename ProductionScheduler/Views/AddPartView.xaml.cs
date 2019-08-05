@@ -1,6 +1,7 @@
 ﻿using ProductionScheduler.Interfaces;
 using ProductionScheduler.Models;
 using ProductionScheduler.Services;
+using ProductionScheduler.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,7 +38,7 @@ namespace ProductionScheduler.Views
             CollectionViewSource moldViewSource = ((CollectionViewSource)(this.FindResource("moldViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             _context.Molds.Load();
-            moldViewSource.Source = _context.Presses.Local;
+            moldViewSource.Source = _context.Molds.Local;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -103,6 +104,8 @@ namespace ProductionScheduler.Views
             ProductFamilyTextbox.Text = null;
             ProductDescriptionTextbox.Text = null;
             CureTimeTextbox.Text = null;
+            var viewModel = (AddPartViewModel)DataContext;
+            viewModel.ActiveListMolds.Clear();
         }
 
         public bool AllFieldsHaveEntries()
@@ -111,7 +114,8 @@ namespace ProductionScheduler.Views
             PartNumberTextbox.Text == "" ||
             ProductFamilyTextbox.Text == "" ||
             ProductDescriptionTextbox.Text == "" ||
-            CureTimeTextbox.Text == ""
+            CureTimeTextbox.Text == "" ||
+            ActiveMoldNumberListbox.Items.Count <= 0
             )
             {
                 return false;
