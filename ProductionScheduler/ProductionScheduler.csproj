@@ -269,5 +269,8 @@
   <ItemGroup>
     <Resource Include="Images\FactoryStackIO_6.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FactoryStackIO_7.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

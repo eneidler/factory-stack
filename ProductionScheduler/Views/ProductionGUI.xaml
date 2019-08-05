@@ -11,6 +11,7 @@
     Title="FactoryStack.IO | Production Control System"
     Width="1400"
     Height="850"
+    Icon="/Images/FactoryStackIO_7.png"
     Style="{StaticResource windowStyle}"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
