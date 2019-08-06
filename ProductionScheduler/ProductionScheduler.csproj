@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201907291637459_ProductFamilyCategory.cs" />
     <Compile Include="Migrations\201907291637459_ProductFamilyCategory.Designer.cs">
       <DependentUpon>201907291637459_ProductFamilyCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061251041_UpdateJobProperties.cs" />
+    <Compile Include="Migrations\201908061251041_UpdateJobProperties.Designer.cs">
+      <DependentUpon>201908061251041_UpdateJobProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
@@ -237,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907291637459_ProductFamilyCategory.resx">
       <DependentUpon>201907291637459_ProductFamilyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061251041_UpdateJobProperties.resx">
+      <DependentUpon>201908061251041_UpdateJobProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
