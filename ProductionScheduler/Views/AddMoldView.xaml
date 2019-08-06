@@ -186,7 +186,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Click="CancelNewMoldButton_Click"
-                Content="Cancel"
+                Content="Close"
                 Style="{StaticResource controlButtonsStyle}" />
         </StackPanel>
     </Grid>

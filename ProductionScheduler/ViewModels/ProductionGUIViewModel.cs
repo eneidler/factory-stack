@@ -18,7 +18,7 @@ namespace ProductionScheduler.ViewModels
         private ICommand _addPartWindowCommand;
         private ICommand _addPressWindowCommand;
         private ICommand _addMoldWindowCommand;
-
+        private ICommand _addJobWindowCommand;
 
         public ProductionGUIViewModel()
         {
@@ -39,6 +39,16 @@ namespace ProductionScheduler.ViewModels
             get => _addMoldWindowCommand = new RelayCommand<object>(_ => NewAddMoldWindow());
         }
 
+        public ICommand AddJobWindowCommand
+        {
+            get => _addJobWindowCommand = new RelayCommand<object>(_ => NewAddJobWindow());
+        }
+
+        private void NewAddJobWindow()
+        {
+            AddJobView addJobView = new AddJobView();
+            addJobView.ShowDialog();
+        }
 
         private void NewAddPartWindow()
         {

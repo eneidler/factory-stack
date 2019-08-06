@@ -139,6 +139,5 @@ namespace ProductionScheduler.Views
                 return true;
             }
         }
-
     }
 }

@@ -102,56 +102,56 @@
             Orientation="Horizontal">
             <Button
                 x:Name="AddNewPartButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="10,0"
                 Command="{Binding AddPartWindowCommand}"
                 Content="New Part"
-                FontSize="18"
+                FontSize="16"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new part to the database." />
             <Button
                 x:Name="AddNewPressButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="10,0"
                 Command="{Binding AddPressWindowCommand}"
                 Content="New Press"
-                FontSize="18"
+                FontSize="16"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new press to the database." />
             <Button
                 x:Name="AddNewMoldButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="10,0"
                 Command="{Binding AddMoldWindowCommand}"
                 Content="New Mold"
-                FontSize="18"
+                FontSize="16"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new mold to the database for a new part number." />
             <Button
                 x:Name="AddNewJobButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="10,0"
-                Command=""
+                Command="{Binding AddJobWindowCommand}"
                 Content="New Job"
-                FontSize="18"
+                FontSize="16"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Create a new job in the system and add it to the schedule." />
             <Button
                 x:Name="ModifyScheduleButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="10,0"
                 Command=""
                 Content="Schedule"
-                FontSize="18"
+                FontSize="16"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="View, modify, or report out the current schedule." />
         </StackPanel>
@@ -165,12 +165,12 @@
             Orientation="Horizontal">
             <Button
                 x:Name="LogoutButton"
-                Width="150"
-                Height="50"
+                Width="100"
+                Height="40"
                 Margin="0,0,20,0"
                 Command="{Binding LogoutCommand, Source={x:Static services:ViewStateManager.Instance}}"
                 Content="Logout"
-                FontSize="18"
+                FontSize="16"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Return to the main login screen." />
         </StackPanel>

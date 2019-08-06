@@ -9,7 +9,7 @@
     xmlns:viewModel="clr-namespace:ProductionScheduler.ViewModels"
     Title="Add New Part Number"
     Width="450"
-    Height="550 "
+    Height="500"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
     Style="{StaticResource windowStyle}"
@@ -184,6 +184,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Width="100"
+                Height="40"
                 Margin="15"
                 Click="AddNewButton_Click"
                 Content="Add Part"
@@ -191,9 +192,10 @@
             <Button
                 x:Name="CancelButton"
                 Width="100"
+                Height="40"
                 Margin="15"
                 Click="CancelButton_Click"
-                Content="Cancel"
+                Content="Close"
                 Style="{StaticResource controlButtonsStyle}" />
         </StackPanel>
         <StackPanel
