@@ -95,8 +95,7 @@
             VerticalAlignment="Center"
             DisplayMemberPath="PartNumber"
             ItemsSource="{Binding Source={StaticResource partViewSource}}"
-            SelectedValue="{Binding SelectedPartNumber}"
-            SelectedValuePath="PartNumber" />
+            SelectedValue="{Binding SelectedPartNumber}" />
         <ComboBox
             x:Name="MoldNumberCombobox"
             Grid.Row="2"
@@ -106,8 +105,10 @@
             Margin="20,7.56,0,7.559"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
+            DisplayMemberPath="MoldNumber"
             ItemsSource="{Binding MoldNumberList}"
-            SelectedItem="{Binding SelectedMoldNumber}" />
+            SelectedValue="{Binding SelectedMoldNumber}"
+            SelectedValuePath="MoldNumber" />
         <ComboBox
             x:Name="PressNumberCombobox"
             Grid.Row="3"

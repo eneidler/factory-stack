@@ -9,16 +9,6 @@ namespace ProductionScheduler.Models
     class Mold
     {
 
-        public Mold()
-        {
-        }
-
-        public Mold(string moldNumber)
-        {
-            MoldNumber = moldNumber;
-        }
-
-
         public int Id { get; set; }
         public string MoldNumber { get; set; }
         public int NumberOfCavities { get; set; }

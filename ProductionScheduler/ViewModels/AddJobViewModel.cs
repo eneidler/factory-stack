@@ -12,8 +12,8 @@ namespace ProductionScheduler.ViewModels
     class AddJobViewModel : BaseViewModel
     {
 
-        private string _selectedPartNumber;
-        private ObservableCollection<string> _moldNumberList = new ObservableCollection<string>();
+        private Part _selectedPartNumber;
+        private ObservableCollection<Mold> _moldNumberList = new ObservableCollection<Mold>();
         private string _selectedMoldNumber;
         private ObservableCollection<string> _pressNumberList = new ObservableCollection<string>();
         private string _selectedPressNumber;
@@ -23,7 +23,7 @@ namespace ProductionScheduler.ViewModels
 
         }
 
-        public string SelectedPartNumber
+        public Part SelectedPartNumber
         {
             get => _selectedPartNumber;
             set
@@ -54,7 +54,7 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
-        public ObservableCollection<string> MoldNumberList
+        public ObservableCollection<Mold> MoldNumberList
         {
             get => _moldNumberList = PopulateMoldList();
             set
@@ -78,33 +78,12 @@ namespace ProductionScheduler.ViewModels
         }
 
 
-        private ObservableCollection<string> PopulateMoldList()
+        private ObservableCollection<Mold> PopulateMoldList()
         {
 
-            List<Mold> usableMolds = new List<Mold>();
-            ObservableCollection<string> usableMoldNumbers = new ObservableCollection<string>();
-
-            using (var context = new ProductionSchedulerContext())
-            {
-                /*var query = from p in context.Parts
-                            where p.PartNumber == SelectedPartNumber
-                            select p;
-
-                var partNumber = query.SingleOrDefault();*/
-
-                var defaultQuery = from p in context.Parts
-                                 select p;
-
-                var partNumber = defaultQuery.FirstOrDefault();               
-
-                usableMolds = partNumber.Molds.ToList();
-
-                    foreach (Mold mold in usableMolds)
-                    {
-                        usableMoldNumbers.Add(mold.MoldNumber);
-                    }               
-            }
-            return usableMoldNumbers;
+            IList<Mold> usableMolds = SelectedPartNumber.Molds;
+                       
+            return (ObservableCollection<Mold>)usableMolds;
         }   
 
     }

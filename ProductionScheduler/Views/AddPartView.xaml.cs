@@ -76,27 +76,39 @@ namespace ProductionScheduler.Views
                     {
 
                         var viewModel = (AddPartViewModel)DataContext;
-                        ObservableCollection<Mold> activeMoldList = viewModel.ActiveListMolds;
-                        List<Mold> moldsToAdd = new List<Mold>();
+                        IList<Mold> moldsToAdd = viewModel.ActiveListMolds;
+                        List<Mold> newMoldList = new List<Mold>();
 
-                        foreach(Mold mold in activeMoldList)
+                        foreach(Mold mold in moldsToAdd)
                         {
-                            moldsToAdd.Add(mold);
+                            Mold newMold = context.Molds.FirstOrDefault(m => m.MoldNumber == mold.MoldNumber);
+                            newMoldList.Add(newMold);
                         }
-
+ 
                         var part = new Part()
                         {
                             PartNumber = PartNumberTextbox.Text,
                             ProductFamilyCategory = ProductFamilyTextbox.Text,
                             ProductDescription = ProductDescriptionTextbox.Text,
-                            CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
-                            Molds = moldsToAdd
-                        };
+                            CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),                          
+                        };                                              
+
+                        //TODO: Fix the feature to add and link molds when adding part 
+                        /*foreach (Mold mold in moldsToAdd)
+                        {
+                            Mold newMold = context.Molds.FirstOrDefault(m => m.MoldNumber == mold.MoldNumber);
+                            part.Molds.Add(newMold);
+
+                            //Student student2 = context.Students.FirstOrDefault(s => s.Name == "Bob");   <<<HACK: EXAMPLES ONLY
+                            //mathClass.Students.Add(student1);
+                        }*/ 
                         context.Parts.Add(part);
                         context.SaveChanges();
 
                         MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ClearAllFields();                      
+                        MessageBox.Show(moldsToAdd.ToString());
+                        ClearAllFields();
+
                     }                  
                     if (partNumber != null)
                     {
