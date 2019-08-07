@@ -1,4 +1,5 @@
-﻿using ProductionScheduler.Services;
+﻿using ProductionScheduler.Models;
+using ProductionScheduler.Services;
 using ProductionScheduler.Views;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,9 @@ namespace ProductionScheduler.ViewModels
 {
     class AddPartViewModel : BaseViewModel
     {
-        private string _selectedDatabaseMold;
-        private string _selectedActiveMold;
-        private ObservableCollection<string> _activeListMolds = new ObservableCollection<string>();
+        private Mold _selectedDatabaseMold;
+        private Mold _selectedActiveMold;
+        private ObservableCollection<Mold> _activeListMolds = new ObservableCollection<Mold>();
         private ICommand _addSelectedDatabaseMoldToActiveListCommand;
         private ICommand _removeSelectedActiveMoldFromActiveListCommand;
         private ICommand _addNewMoldToDatabaseCommand;
@@ -26,7 +27,7 @@ namespace ProductionScheduler.ViewModels
 
         }
 
-        public string SelectedDatabaseMold
+        public Mold SelectedDatabaseMold
         {
             get => _selectedDatabaseMold;
             set
@@ -36,7 +37,7 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
-        public string SelectedActiveMold
+        public Mold SelectedActiveMold
         {
             get => _selectedActiveMold;
             set
@@ -46,7 +47,7 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
-        public ObservableCollection<string> ActiveListMolds
+        public ObservableCollection<Mold> ActiveListMolds
         {
             get => _activeListMolds;
             set

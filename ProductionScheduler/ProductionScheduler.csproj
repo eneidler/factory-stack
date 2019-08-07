@@ -260,6 +260,7 @@
     <None Include="packages.config" />
     <None Include="ProductionScheduler_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\ProductionScheduler.Models.Mold.datasource" />
+    <None Include="Properties\DataSources\ProductionScheduler.Models.Part.datasource" />
     <None Include="Properties\DataSources\ProductionScheduler.Models.Press.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

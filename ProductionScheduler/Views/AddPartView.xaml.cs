@@ -4,6 +4,7 @@ using ProductionScheduler.Services;
 using ProductionScheduler.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -73,16 +74,23 @@ namespace ProductionScheduler.Views
                 {
                     if (partNumber == null)
                     {
+
+                        var viewModel = (AddPartViewModel)DataContext;
+                        ObservableCollection<Mold> activeMoldList = viewModel.ActiveListMolds;
+                        List<Mold> moldsToAdd = new List<Mold>();
+
+                        foreach(Mold mold in activeMoldList)
+                        {
+                            moldsToAdd.Add(mold);
+                        }
+
                         var part = new Part()
                         {
                             PartNumber = PartNumberTextbox.Text,
                             ProductFamilyCategory = ProductFamilyTextbox.Text,
                             ProductDescription = ProductDescriptionTextbox.Text,
                             CureTimeInMinutes = int.Parse(CureTimeTextbox.Text),
-                            Molds = new List<Mold>
-                                    {
-                                        
-                                    }
+                            Molds = moldsToAdd
                         };
                         context.Parts.Add(part);
                         context.SaveChanges();

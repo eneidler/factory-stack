@@ -1,6 +1,8 @@
 ﻿using ProductionScheduler.Interfaces;
+using ProductionScheduler.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,9 @@ namespace ProductionScheduler.Views
     /// </summary>
     public partial class AddJobView : Window, ITextValidation
     {
+
+        ProductionSchedulerContext _context = new ProductionSchedulerContext();
+
         public AddJobView()
         {
             InitializeComponent();
@@ -47,6 +52,13 @@ namespace ProductionScheduler.Views
         public bool AllFieldsHaveEntries()
         {
             return true; //TODO: Add actual logic. This is in place for program testing.
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource partViewSource = ((CollectionViewSource)(this.FindResource("partViewSource")));
+            _context.Parts.Load();
+            partViewSource.Source = _context.Parts.Local;
         }
     }
 }

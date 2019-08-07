@@ -117,7 +117,6 @@
             DisplayMemberPath="MoldNumber"
             ItemsSource="{Binding Source={StaticResource moldViewSource}}"
             SelectedValue="{Binding SelectedDatabaseMold}"
-            SelectedValuePath="MoldNumber"
             SelectionMode="Single" />
         <ListBox
             x:Name="ActiveMoldNumberListbox"
@@ -126,6 +125,7 @@
             Width="150"
             Height="100"
             HorizontalContentAlignment="Center"
+            DisplayMemberPath="MoldNumber"
             ItemsSource="{Binding ActiveListMolds}"
             SelectedValue="{Binding SelectedActiveMold}" />
         <StackPanel
