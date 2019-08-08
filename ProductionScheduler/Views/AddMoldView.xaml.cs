@@ -98,7 +98,8 @@ namespace ProductionScheduler.Views
                         {
                             MoldNumber = MoldNumberTextbox.Text,
                             NumberOfCavities = int.Parse(NumberOfCavitiesTextbox.Text),
-                            Presses = pressesToAdd
+                            Presses = pressesToAdd,
+                            Parts = new List<Part>()
                         };
                         context.Molds.Add(mold);
                         context.SaveChanges();

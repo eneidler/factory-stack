@@ -48,6 +48,7 @@ namespace ProductionScheduler.Views
                         {
                             PressNumber = PressNumberTextbox.Text,
                             PressCapacity = PressCapacityTextbox.Text,
+                            Molds = new List<Mold>()
                         };
                         context.Presses.Add(press);
                         context.SaveChanges();

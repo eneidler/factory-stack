@@ -82,7 +82,7 @@
             Height="100"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text="{Binding SelectedPartNumber}"
+            Text="{Binding SelectedPartNumber.PartNumber, Mode=OneWay}"
             TextWrapping="Wrap" />
         <ComboBox
             x:Name="PartNumberCombobox"
@@ -94,8 +94,9 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="PartNumber"
-            ItemsSource="{Binding Source={StaticResource partViewSource}}"
-            SelectedValue="{Binding SelectedPartNumber}" />
+            ItemsSource="{Binding Source={StaticResource partViewSource}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+            SelectedIndex="0"
+            SelectedItem="{Binding SelectedPartNumber}" />
         <ComboBox
             x:Name="MoldNumberCombobox"
             Grid.Row="2"
@@ -106,9 +107,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="MoldNumber"
-            ItemsSource="{Binding MoldNumberList}"
-            SelectedValue="{Binding SelectedMoldNumber}"
-            SelectedValuePath="MoldNumber" />
+            ItemsSource="{Binding MoldNumberList}" />
         <ComboBox
             x:Name="PressNumberCombobox"
             Grid.Row="3"
@@ -141,6 +140,7 @@
                 Width="100"
                 Height="40"
                 Margin="5,0"
+                Click="AddJobButton_Click"
                 Content="Add Job"
                 Style="{StaticResource controlButtonsStyle}" />
             <Button

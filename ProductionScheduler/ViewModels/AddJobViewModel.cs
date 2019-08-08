@@ -12,8 +12,9 @@ namespace ProductionScheduler.ViewModels
     class AddJobViewModel : BaseViewModel
     {
 
+        ProductionSchedulerContext _context = new ProductionSchedulerContext();
         private Part _selectedPartNumber;
-        private ObservableCollection<Mold> _moldNumberList = new ObservableCollection<Mold>();
+        private IList<Mold> _moldNumberList = new ObservableCollection<Mold>();
         private string _selectedMoldNumber;
         private ObservableCollection<string> _pressNumberList = new ObservableCollection<string>();
         private string _selectedPressNumber;
@@ -54,15 +55,23 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
-        public ObservableCollection<Mold> MoldNumberList
+        public IList<Mold> MoldNumberList
         {
-            get => _moldNumberList = PopulateMoldList();
+            get
+            {
+                var moldList = _context.Molds.Where(m => m.Parts.Any(x => x.PartNumber.Contains("111111"))); //TODO: This 111111 should be a string value for the selected part number, but it's currently broken.
+                
+                List<Mold> usableMolds = moldList.ToList();
+ 
+                _moldNumberList = usableMolds;
+                return _moldNumberList;
+            }
             set
             {
                 _moldNumberList = value;
                 NotifyOnPropertyChanged(nameof(SelectedPartNumber));
                 NotifyOnPropertyChanged(nameof(SelectedMoldNumber));
-                NotifyOnPropertyChanged(nameof(MoldNumberList));
+
             }
         }
 
@@ -77,14 +86,38 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
+        
+        //TODO: Use a method for populating lists once the null issue is sorted for MoldNumberList & SelectedPartNumber.PartNumber
+        //private ObservableCollection<Mold> PopulateMoldList()
+        //{
+        //    //ObservableCollection<Mold> moldsToList = new ObservableCollection<Mold>();
+        //    IList<Mold> availableMolds = new List<Mold>();
 
-        private ObservableCollection<Mold> PopulateMoldList()
-        {
+        //    if(_selectedPartNumber.Molds == null)
+        //    {
+        //        Part firstPart = _context.Parts.FirstOrDefault(p => p.Molds == p.Molds[0]);
+        //        availableMolds = firstPart.Molds;
+        //    }
 
-            IList<Mold> usableMolds = SelectedPartNumber.Molds;
-                       
-            return (ObservableCollection<Mold>)usableMolds;
-        }   
+        //    if (_selectedPartNumber.Molds != null)
+        //    {
+        //        foreach (Mold mold in _selectedPartNumber.Molds)
+        //        {
+        //            availableMolds.Add(mold);
+        //        }
+        //    }
+
+
+        //    if (availableMolds != null)
+        //    {
+        //        foreach (Mold mold in availableMolds)
+        //        {
+        //            Mold newMold = _context.Molds.FirstOrDefault(m => m.MoldNumber == mold.MoldNumber);
+        //            moldsToList.Add(newMold);
+        //        }
+        //    }
+        //    return (ObservableCollection<Mold>)availableMolds;
+        //} 
 
     }
 

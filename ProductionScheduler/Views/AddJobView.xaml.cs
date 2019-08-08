@@ -1,5 +1,7 @@
 ﻿using ProductionScheduler.Interfaces;
+using ProductionScheduler.Models;
 using ProductionScheduler.Services;
+using ProductionScheduler.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -30,6 +32,20 @@ namespace ProductionScheduler.Views
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource partViewSource = ((CollectionViewSource)(this.FindResource("partViewSource")));
+            _context.Parts.Load();
+            partViewSource.Source = _context.Parts.Local;
+        }
+
+        private void AddJobButton_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = (AddJobViewModel)DataContext;
+
+            MessageBox.Show(viewModel.SelectedPartNumber.PartNumber);
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Job", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
@@ -54,11 +70,5 @@ namespace ProductionScheduler.Views
             return true; //TODO: Add actual logic. This is in place for program testing.
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSource partViewSource = ((CollectionViewSource)(this.FindResource("partViewSource")));
-            _context.Parts.Load();
-            partViewSource.Source = _context.Parts.Local;
-        }
     }
 }
