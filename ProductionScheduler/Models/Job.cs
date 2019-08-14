@@ -29,6 +29,7 @@ namespace ProductionScheduler.Models
         public int Quantity { get; set; }
         public string JobNotes { get; set; }
         public bool IsComplete { get; set; }
+        public bool IsPaused { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
