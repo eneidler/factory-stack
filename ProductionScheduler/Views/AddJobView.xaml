@@ -10,7 +10,6 @@
     Title="Add New Job"
     Width="450"
     Height="450"
-    Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.DataContext>
@@ -82,7 +81,7 @@
             Height="100"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text="{Binding SelectedPartNumber.PartNumber, Mode=OneWay}"
+            Text=""
             TextWrapping="Wrap" />
         <ComboBox
             x:Name="PartNumberCombobox"
@@ -94,7 +93,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="PartNumber"
-            ItemsSource="{Binding AvailablePartList, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding AvailablePartList}"
             SelectedIndex="0"
             SelectedItem="{Binding SelectedPartNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <ComboBox
@@ -107,7 +107,10 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="MoldNumber"
-            ItemsSource="{Binding MoldNumberList}" />
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding AvailableMoldList}"
+            SelectedIndex="0"
+            SelectedItem="{Binding SelectedMoldNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <ComboBox
             x:Name="PressNumberCombobox"
             Grid.Row="3"
@@ -117,7 +120,11 @@
             Margin="20,7.56,0,7.559"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            DisplayMemberPath="PressNumber" />
+            DisplayMemberPath="PressNumber"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding AvailablePressList}"
+            SelectedIndex="0"
+            SelectedItem="{Binding SelectedPressNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox
             x:Name="JobQuantityTextbox"
             Grid.Row="4"

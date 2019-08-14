@@ -32,12 +32,17 @@ namespace ProductionScheduler.Views
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSource partViewSource = ((CollectionViewSource)(this.FindResource("partViewSource")));
-            _context.Parts.Load();
-            partViewSource.Source = _context.Parts.Local;
-        }
+
+        //UNDONE: The following code was used for accessing database and
+        //populating the Part Number combo box. It can be removed once final testing
+        //is complete for the Job Add feature.
+
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    CollectionViewSource partViewSource = ((CollectionViewSource)(this.FindResource("partViewSource")));
+        //    _context.Parts.Load();
+        //    partViewSource.Source = _context.Parts.Local;
+        //}
 
         private void AddJobButton_Click(object sender, RoutedEventArgs e)
         {

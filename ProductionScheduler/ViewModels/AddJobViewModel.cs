@@ -14,11 +14,11 @@ namespace ProductionScheduler.ViewModels
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();
         private Part _selectedPartNumber;
-        private IList<Part> _availablePartList;
-        private IList<Mold> _moldNumberList = new ObservableCollection<Mold>();
-        private string _selectedMoldNumber;
-        private ObservableCollection<string> _pressNumberList = new ObservableCollection<string>();
-        private string _selectedPressNumber;
+        private IList<Part> _availablePartList = new ObservableCollection<Part>();
+        private IList<Mold> _availableMoldList = new ObservableCollection<Mold>();
+        private Mold _selectedMoldNumber;
+        private IList<Press> _availablePressList = new ObservableCollection<Press>();
+        private Press _selectedPressNumber;
 
         public AddJobViewModel()
         {
@@ -31,16 +31,36 @@ namespace ProductionScheduler.ViewModels
             set
             {
                 _selectedPartNumber = value;
-                NotifyOnPropertyChanged(nameof(SelectedPartNumber));
-                NotifyOnPropertyChanged(nameof(MoldNumberList));
+                NotifyOnPropertyChanged(nameof(AvailableMoldList));
             }
         }
+
+        public Mold SelectedMoldNumber
+        {
+            get => _selectedMoldNumber;
+            set
+            {
+                _selectedMoldNumber = value;
+                NotifyOnPropertyChanged(nameof(AvailablePressList));
+            }
+        }
+
+        public Press SelectedPressNumber
+        {
+            get => _selectedPressNumber;
+            set
+            {
+                _selectedPressNumber = value;
+
+            }
+        }
+
 
         public IList<Part> AvailablePartList
         {
             get
             {
-                using(var context = new ProductionSchedulerContext())
+                using (var context = new ProductionSchedulerContext())
                 {
                     var query = from p in context.Parts
                                 select p;
@@ -53,30 +73,11 @@ namespace ProductionScheduler.ViewModels
             set
             {
                 _availablePartList = value;
+
             }
         }
 
-        public string SelectedMoldNumber
-        {
-            get => _selectedMoldNumber;
-            set
-            {
-                _selectedMoldNumber = value;
-                NotifyOnPropertyChanged(nameof(SelectedMoldNumber));
-            }
-        }
-
-        public string SelectedPressNumber
-        {
-            get => _selectedPressNumber;
-            set
-            {
-                _selectedPressNumber = value;
-                NotifyOnPropertyChanged(nameof(SelectedPressNumber));
-            }
-        }
-
-        public IList<Mold> MoldNumberList
+        public IList<Mold> AvailableMoldList
         {
             get
             {
@@ -85,62 +86,32 @@ namespace ProductionScheduler.ViewModels
 
                 List<Mold> usableMolds = moldList.ToList();
  
-                _moldNumberList = usableMolds;
-                return _moldNumberList;
+                _availableMoldList = usableMolds;
+                return _availableMoldList;
             }
             set
             {
-                _moldNumberList = value;
-                NotifyOnPropertyChanged(nameof(SelectedMoldNumber));
-
+                _availableMoldList = value;
             }
         }
 
-        public ObservableCollection<string> PressNumberList
+        public IList<Press> AvailablePressList
         {
-            get => _pressNumberList;
+            get
+            {
+                string selectedMoldNumber = SelectedMoldNumber.MoldNumber;
+                var pressList = _context.Presses.Where(p => p.Molds.Any(x => x.MoldNumber.Contains(selectedMoldNumber)));
+
+                List<Press> usablePresses = pressList.ToList();
+
+                _availablePressList = usablePresses;
+                return _availablePressList;
+            }
             set
             {
-                _pressNumberList = value;
-                NotifyOnPropertyChanged(nameof(SelectedPressNumber));
-                NotifyOnPropertyChanged(nameof(PressNumberList));
+                _availablePressList = value;
+
             }
         }
-
-        
-        //TODO: Use a method for populating lists once the null issue is sorted for MoldNumberList & SelectedPartNumber.PartNumber
-        //private ObservableCollection<Mold> PopulateMoldList()
-        //{
-        //    //ObservableCollection<Mold> moldsToList = new ObservableCollection<Mold>();
-        //    IList<Mold> availableMolds = new List<Mold>();
-
-        //    if(_selectedPartNumber.Molds == null)
-        //    {
-        //        Part firstPart = _context.Parts.FirstOrDefault(p => p.Molds == p.Molds[0]);
-        //        availableMolds = firstPart.Molds;
-        //    }
-
-        //    if (_selectedPartNumber.Molds != null)
-        //    {
-        //        foreach (Mold mold in _selectedPartNumber.Molds)
-        //        {
-        //            availableMolds.Add(mold);
-        //        }
-        //    }
-
-
-        //    if (availableMolds != null)
-        //    {
-        //        foreach (Mold mold in availableMolds)
-        //        {
-        //            Mold newMold = _context.Molds.FirstOrDefault(m => m.MoldNumber == mold.MoldNumber);
-        //            moldsToList.Add(newMold);
-        //        }
-        //    }
-        //    return (ObservableCollection<Mold>)availableMolds;
-        //} 
-
-    }
-
-    
+    }   
 }
