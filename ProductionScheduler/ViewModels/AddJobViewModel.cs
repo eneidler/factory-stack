@@ -14,6 +14,7 @@ namespace ProductionScheduler.ViewModels
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();
         private Part _selectedPartNumber;
+        private IList<Part> _availablePartList;
         private IList<Mold> _moldNumberList = new ObservableCollection<Mold>();
         private string _selectedMoldNumber;
         private ObservableCollection<string> _pressNumberList = new ObservableCollection<string>();
@@ -32,6 +33,26 @@ namespace ProductionScheduler.ViewModels
                 _selectedPartNumber = value;
                 NotifyOnPropertyChanged(nameof(SelectedPartNumber));
                 NotifyOnPropertyChanged(nameof(MoldNumberList));
+            }
+        }
+
+        public IList<Part> AvailablePartList
+        {
+            get
+            {
+                using(var context = new ProductionSchedulerContext())
+                {
+                    var query = from p in context.Parts
+                                select p;
+
+                    var usableParts = query.ToList();
+                    _availablePartList = usableParts;
+                }
+                return _availablePartList;
+            }
+            set
+            {
+                _availablePartList = value;
             }
         }
 
@@ -59,8 +80,9 @@ namespace ProductionScheduler.ViewModels
         {
             get
             {
-                var moldList = _context.Molds.Where(m => m.Parts.Any(x => x.PartNumber.Contains("111111"))); //TODO: This 111111 should be a string value for the selected part number, but it's currently broken.
-                
+                string selectedPartNumber = SelectedPartNumber.PartNumber;
+                var moldList = _context.Molds.Where(m => m.Parts.Any(x => x.PartNumber.Contains(selectedPartNumber)));
+
                 List<Mold> usableMolds = moldList.ToList();
  
                 _moldNumberList = usableMolds;
@@ -69,7 +91,6 @@ namespace ProductionScheduler.ViewModels
             set
             {
                 _moldNumberList = value;
-                NotifyOnPropertyChanged(nameof(SelectedPartNumber));
                 NotifyOnPropertyChanged(nameof(SelectedMoldNumber));
 
             }

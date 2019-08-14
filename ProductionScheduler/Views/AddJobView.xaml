@@ -94,9 +94,9 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="PartNumber"
-            ItemsSource="{Binding Source={StaticResource partViewSource}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+            ItemsSource="{Binding AvailablePartList, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
             SelectedIndex="0"
-            SelectedItem="{Binding SelectedPartNumber}" />
+            SelectedItem="{Binding SelectedPartNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <ComboBox
             x:Name="MoldNumberCombobox"
             Grid.Row="2"
