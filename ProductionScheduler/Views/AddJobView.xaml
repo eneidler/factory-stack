@@ -81,7 +81,7 @@
             Height="100"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text=""
+            Text="{Binding AdditionalNotes}"
             TextWrapping="Wrap" />
         <ComboBox
             x:Name="PartNumberCombobox"
@@ -134,6 +134,8 @@
             Margin="20,0,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
+            PreviewTextInput="JobQuantityTextbox_PreviewTextInput"
+            Text="{Binding JobQuantity}"
             TextWrapping="Wrap" />
         <StackPanel
             Grid.Row="7"

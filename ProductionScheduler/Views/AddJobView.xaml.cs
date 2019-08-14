@@ -75,5 +75,16 @@ namespace ProductionScheduler.Views
             return true; //TODO: Add actual logic. This is in place for program testing.
         }
 
+        private void JobQuantityTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            foreach (char c in e.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    e.Handled = true;
+                    break;
+                }
+            }
+        }
     }
 }

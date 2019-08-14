@@ -19,6 +19,8 @@ namespace ProductionScheduler.ViewModels
         private Mold _selectedMoldNumber;
         private IList<Press> _availablePressList = new ObservableCollection<Press>();
         private Press _selectedPressNumber;
+        private int _jobQuantity;
+        private string _additionalNotes;
 
         public AddJobViewModel()
         {
@@ -111,6 +113,26 @@ namespace ProductionScheduler.ViewModels
             {
                 _availablePressList = value;
 
+            }
+        }
+
+        public int JobQuantity
+        {
+            get => _jobQuantity;
+            set
+            {
+                _jobQuantity = value;
+                NotifyOnPropertyChanged(nameof(JobQuantity));
+            }
+        }
+
+        public string AdditionalNotes
+        {
+            get => _additionalNotes;
+            set
+            {
+                _additionalNotes = value;
+                NotifyOnPropertyChanged(nameof(AdditionalNotes));
             }
         }
     }   
