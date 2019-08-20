@@ -146,6 +146,14 @@
     <Compile Include="Migrations\201908201758337_RemoveJobLists.Designer.cs">
       <DependentUpon>201908201758337_RemoveJobLists.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908201850533_JobListToPartModel.cs" />
+    <Compile Include="Migrations\201908201850533_JobListToPartModel.Designer.cs">
+      <DependentUpon>201908201850533_JobListToPartModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201856336_relationshipTest.cs" />
+    <Compile Include="Migrations\201908201856336_relationshipTest.Designer.cs">
+      <DependentUpon>201908201856336_relationshipTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
     <Compile Include="Models\ViewOptions.cs" />
@@ -308,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908201758337_RemoveJobLists.resx">
       <DependentUpon>201908201758337_RemoveJobLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201850533_JobListToPartModel.resx">
+      <DependentUpon>201908201850533_JobListToPartModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201856336_relationshipTest.resx">
+      <DependentUpon>201908201856336_relationshipTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

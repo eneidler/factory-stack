@@ -24,7 +24,6 @@ namespace ProductionScheduler.ViewModels
         private int _jobQuantity;
         private string _additionalNotes;
         private RelayCommand<object> _addJobCommand;
-        private Job _newJob;
 
         public AddJobViewModel()
         {
@@ -140,19 +139,6 @@ namespace ProductionScheduler.ViewModels
             }
         }
 
-        public Job NewJob
-        {
-            get
-            {              
-                return _newJob;
-            }
-            set
-            {
-                _newJob = value;
-                NotifyOnPropertyChanged(nameof(NewJob));
-            }
-        }
-
         public ICommand AddJobCommand
         {
             get => _addJobCommand = new RelayCommand<object>(_ => AddNewJobToDatabase());
@@ -160,22 +146,23 @@ namespace ProductionScheduler.ViewModels
 
         private void AddNewJobToDatabase()
         {
-            NewJob = Job.GenerateNewJob(
+            Job newJob = Job.GenerateNewJob(
                 JobQuantity,
-                AdditionalNotes);
+                AdditionalNotes);           
 
-            NewJob.JobNumber = Job.AssignJobNumber();
+            var partToAdd = _context.Parts.FirstOrDefault(p => p.PartNumber == SelectedPartNumber.PartNumber);
+            var moldToAdd = _context.Molds.FirstOrDefault(m => m.MoldNumber == SelectedMoldNumber.MoldNumber);
+            var pressToAdd = _context.Presses.FirstOrDefault(x => x.PressNumber == SelectedPressNumber.PressNumber);
 
-            _context.Jobs.Add(NewJob);
+            newJob.Part = _context.Parts.Attach(partToAdd);
+            newJob.Mold = _context.Molds.Attach(moldToAdd);
+            newJob.Press = _context.Presses.Attach(pressToAdd);
 
-            //var part = _context.Parts.FirstOrDefault(p => p.PartNumber == SelectedPartNumber.PartNumber);
+            _context.Jobs.Add(newJob);
 
-            var updateNewJob = _context.Jobs.FirstOrDefault(j => j.JobNumber == NewJob.JobNumber);
-            updateNewJob.Part = SelectedPartNumber;
-            _context.Entry(updateNewJob).Reference("Part");
-            
+            Job.AssignJobNumber(newJob);
 
-            _context.SaveChanges();           
+            _context.SaveChanges();
         }
     }   
 }

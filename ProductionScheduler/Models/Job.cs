@@ -11,7 +11,10 @@ namespace ProductionScheduler.Models
 {
     class Job //: IJobCreator
     {
-     
+        private const int _initializingJobNumber = 0;
+        private const int _jobCounter = 1;
+        private const int _firstTimeJobNumber = 1;
+
         public Job()
         {
 
@@ -35,32 +38,43 @@ namespace ProductionScheduler.Models
                int quantity,
                string jobNotes)
         {
+
             Job job = new Job()
             {
-                Part = new Part(),
-                Mold = new Mold(),
-                Press = new Press(),
                 Quantity = quantity,
                 JobNotes = jobNotes,
                 IsComplete = false,
                 IsPaused = false,
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(10)
+                EndDate = DateTime.Now.AddDays(10),
+                JobNumber = _initializingJobNumber
             };
 
             return job;
         }
 
-        public static int AssignJobNumber()
+        public static void AssignJobNumber(Job job)
         {
-            ProductionSchedulerContext context = new ProductionSchedulerContext();
-            
-            int searchJobNumber = context.Jobs.Max(j => j.JobNumber);
+            using (ProductionSchedulerContext context = new ProductionSchedulerContext())
+            {
+                var storedJobCount = context.Jobs.Count(); //This is used to establish an initial job number for the first job entered, otherwise 'searchJobNumber' will return null and throw an exception.
+                if (storedJobCount <= 0)
+                    job.JobNumber = _firstTimeJobNumber;
 
-            int newJobNumber = searchJobNumber + 1;
-            
-            return newJobNumber;
+                if (storedJobCount > 0)
+                {
+                    var searchJobNumber = context.Jobs.Max(j => j.JobNumber);
+
+                    if (searchJobNumber <= _initializingJobNumber)
+                    {
+                        job.JobNumber = _firstTimeJobNumber;
+                    }
+                    if (searchJobNumber > _initializingJobNumber)
+                    {
+                        job.JobNumber = searchJobNumber + _jobCounter;
+                    }
+                }
+            }
         }
-
     }
 }
