@@ -149,7 +149,7 @@
                 Width="100"
                 Height="40"
                 Margin="5,0"
-                Click="AddJobButton_Click"
+                Command="{Binding AddJobCommand}"
                 Content="Add Job"
                 Style="{StaticResource controlButtonsStyle}" />
             <Button

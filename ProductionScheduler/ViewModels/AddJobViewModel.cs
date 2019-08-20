@@ -1,4 +1,5 @@
-﻿using ProductionScheduler.Models;
+﻿using ProductionScheduler.Interfaces;
+using ProductionScheduler.Models;
 using ProductionScheduler.Services;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ProductionScheduler.ViewModels
 {
@@ -21,6 +23,8 @@ namespace ProductionScheduler.ViewModels
         private Press _selectedPressNumber;
         private int _jobQuantity;
         private string _additionalNotes;
+        private RelayCommand<object> _addJobCommand;
+        private Job _newJob;
 
         public AddJobViewModel()
         {
@@ -134,6 +138,44 @@ namespace ProductionScheduler.ViewModels
                 _additionalNotes = value;
                 NotifyOnPropertyChanged(nameof(AdditionalNotes));
             }
+        }
+
+        public Job NewJob
+        {
+            get
+            {              
+                return _newJob;
+            }
+            set
+            {
+                _newJob = value;
+                NotifyOnPropertyChanged(nameof(NewJob));
+            }
+        }
+
+        public ICommand AddJobCommand
+        {
+            get => _addJobCommand = new RelayCommand<object>(_ => AddNewJobToDatabase());
+        }
+
+        private void AddNewJobToDatabase()
+        {
+            NewJob = Job.GenerateNewJob(
+                JobQuantity,
+                AdditionalNotes);
+
+            NewJob.JobNumber = Job.AssignJobNumber();
+
+            _context.Jobs.Add(NewJob);
+
+            //var part = _context.Parts.FirstOrDefault(p => p.PartNumber == SelectedPartNumber.PartNumber);
+
+            var updateNewJob = _context.Jobs.FirstOrDefault(j => j.JobNumber == NewJob.JobNumber);
+            updateNewJob.Part = SelectedPartNumber;
+            _context.Entry(updateNewJob).Reference("Part");
+            
+
+            _context.SaveChanges();           
         }
     }   
 }

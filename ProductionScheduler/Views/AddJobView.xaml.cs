@@ -44,13 +44,6 @@ namespace ProductionScheduler.Views
         //    partViewSource.Source = _context.Parts.Local;
         //}
 
-        private void AddJobButton_Click(object sender, RoutedEventArgs e)
-        {
-            var viewModel = (AddJobViewModel)DataContext;
-
-            MessageBox.Show(viewModel.SelectedPartNumber.PartNumber);
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Job", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);

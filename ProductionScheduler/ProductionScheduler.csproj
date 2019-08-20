@@ -118,6 +118,34 @@
     <Compile Include="Migrations\201908141948141_AddIsPausedColumn.Designer.cs">
       <DependentUpon>201908141948141_AddIsPausedColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908201427221_DateTime2ConversionWithAttributes.cs" />
+    <Compile Include="Migrations\201908201427221_DateTime2ConversionWithAttributes.Designer.cs">
+      <DependentUpon>201908201427221_DateTime2ConversionWithAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201524312_AddJobNumberColumn.cs" />
+    <Compile Include="Migrations\201908201524312_AddJobNumberColumn.Designer.cs">
+      <DependentUpon>201908201524312_AddJobNumberColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201637412_AddJobListColumns.cs" />
+    <Compile Include="Migrations\201908201637412_AddJobListColumns.Designer.cs">
+      <DependentUpon>201908201637412_AddJobListColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201638184_AddJobListColumnsFix.cs" />
+    <Compile Include="Migrations\201908201638184_AddJobListColumnsFix.Designer.cs">
+      <DependentUpon>201908201638184_AddJobListColumnsFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201640299_JobListFixTwo.cs" />
+    <Compile Include="Migrations\201908201640299_JobListFixTwo.Designer.cs">
+      <DependentUpon>201908201640299_JobListFixTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201642285_JobListFixThree.cs" />
+    <Compile Include="Migrations\201908201642285_JobListFixThree.Designer.cs">
+      <DependentUpon>201908201642285_JobListFixThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201758337_RemoveJobLists.cs" />
+    <Compile Include="Migrations\201908201758337_RemoveJobLists.Designer.cs">
+      <DependentUpon>201908201758337_RemoveJobLists.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
     <Compile Include="Models\ViewOptions.cs" />
@@ -259,6 +287,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908141948141_AddIsPausedColumn.resx">
       <DependentUpon>201908141948141_AddIsPausedColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201427221_DateTime2ConversionWithAttributes.resx">
+      <DependentUpon>201908201427221_DateTime2ConversionWithAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201524312_AddJobNumberColumn.resx">
+      <DependentUpon>201908201524312_AddJobNumberColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201637412_AddJobListColumns.resx">
+      <DependentUpon>201908201637412_AddJobListColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201638184_AddJobListColumnsFix.resx">
+      <DependentUpon>201908201638184_AddJobListColumnsFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201640299_JobListFixTwo.resx">
+      <DependentUpon>201908201640299_JobListFixTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201642285_JobListFixThree.resx">
+      <DependentUpon>201908201642285_JobListFixThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201758337_RemoveJobLists.resx">
+      <DependentUpon>201908201758337_RemoveJobLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

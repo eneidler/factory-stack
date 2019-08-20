@@ -11,10 +11,11 @@ namespace ProductionScheduler.Interfaces
     {
 
         Job GenerateNewJob(
-            int id,
             Part part,
             Press press,
-            Mold mold);
+            Mold mold,
+            int quantity,
+            string jobNotes);
 
     }
 }

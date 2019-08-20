@@ -14,8 +14,6 @@ namespace ProductionScheduler.Models
         public int NumberOfCavities { get; set; }
         public IList<Press> Presses { get; set; }
         public IList<Part> Parts { get; set; }
-
-
     }
 
 }
