@@ -7,11 +7,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ProductionScheduler.ViewModels
 {
-    class AddJobViewModel : BaseViewModel
+    class AddJobViewModel : BaseViewModel, ITextValidation
     {
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();
@@ -56,7 +57,7 @@ namespace ProductionScheduler.ViewModels
             set
             {
                 _selectedPressNumber = value;
-
+                NotifyOnPropertyChanged(nameof(AvailablePartList)); //This listener is here so that when the ClearAllFields() method is called, there is a notification to AvailablePartList.
             }
         }
 
@@ -144,25 +145,58 @@ namespace ProductionScheduler.ViewModels
             get => _addJobCommand = new RelayCommand<object>(_ => AddNewJobToDatabase());
         }
 
+        public bool AllFieldsHaveEntries()
+        {
+            bool fieldsHaveEntries;
+            if (SelectedPartNumber != null &&
+                SelectedMoldNumber != null &&
+                SelectedPressNumber != null &&
+                JobQuantity > 0)
+            {
+                fieldsHaveEntries = true;
+            }
+            else
+                fieldsHaveEntries = false;
+            return fieldsHaveEntries;
+        }
+
+        public void ClearAllFields()
+        {
+            SelectedPartNumber = AvailablePartList[0]; 
+            SelectedMoldNumber = AvailableMoldList[0];
+            SelectedPressNumber = AvailablePressList[0];
+            JobQuantity = 0;
+            AdditionalNotes = "";
+        }
+
         private void AddNewJobToDatabase()
         {
-            Job newJob = Job.GenerateNewJob(
-                JobQuantity,
-                AdditionalNotes);           
+            if (AllFieldsHaveEntries() == false)
+            {
+                MessageBox.Show("All fields must have entries, with the exception of the notes field.", "Job Entry Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (AllFieldsHaveEntries() == true)
+            {
+                Job newJob = Job.GenerateNewJob(
+                    JobQuantity,
+                    AdditionalNotes);
 
-            var partToAdd = _context.Parts.FirstOrDefault(p => p.PartNumber == SelectedPartNumber.PartNumber);
-            var moldToAdd = _context.Molds.FirstOrDefault(m => m.MoldNumber == SelectedMoldNumber.MoldNumber);
-            var pressToAdd = _context.Presses.FirstOrDefault(x => x.PressNumber == SelectedPressNumber.PressNumber);
+                var partToAdd = _context.Parts.FirstOrDefault(p => p.PartNumber == SelectedPartNumber.PartNumber);
+                var moldToAdd = _context.Molds.FirstOrDefault(m => m.MoldNumber == SelectedMoldNumber.MoldNumber);
+                var pressToAdd = _context.Presses.FirstOrDefault(x => x.PressNumber == SelectedPressNumber.PressNumber);
 
-            newJob.Part = _context.Parts.Attach(partToAdd);
-            newJob.Mold = _context.Molds.Attach(moldToAdd);
-            newJob.Press = _context.Presses.Attach(pressToAdd);
+                newJob.Part = _context.Parts.Attach(partToAdd);
+                newJob.Mold = _context.Molds.Attach(moldToAdd);
+                newJob.Press = _context.Presses.Attach(pressToAdd);
 
-            _context.Jobs.Add(newJob);
+                _context.Jobs.Add(newJob);
 
-            Job.AssignJobNumber(newJob);
+                Job.AssignJobNumber(newJob);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+                ClearAllFields();
+                MessageBox.Show("Job Added Successfully!", "Job Added", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }   
 }

@@ -60,7 +60,12 @@ namespace ProductionScheduler.Views
 
         public void ClearAllFields()
         {
-
+            //TODO: Finish or remove ITextValidation implementation
+            //private void btnClick(object sender, RoutedEventArgs e)
+            //{
+            //    var btn = sender as Button;
+            //    btn.Command.Execute(btn.CommandParameter);
+            //}
         }
 
         public bool AllFieldsHaveEntries()
