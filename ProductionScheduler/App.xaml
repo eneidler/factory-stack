@@ -14,8 +14,8 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
-                        <GradientStop Offset="0" Color="#424242" />
-                        <GradientStop Offset="1" Color="#00b68c" />
+                        <GradientStop Offset="0" Color="#798582" />
+                        <GradientStop Offset="1" Color="#D3E8E4" />
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -32,7 +32,7 @@
             <Setter Property="Height" Value="250" />
             <Setter Property="Width" Value="500" />
             <Setter Property="Margin" Value="100,50" />
-            <Setter Property="Background" Value="#00b68c" />
+            <Setter Property="Background" Value="#CCE0DC" />
         </Style>
 
         <!--  Press display control button styles  -->

@@ -358,5 +358,11 @@
   <ItemGroup>
     <Resource Include="Images\FactoryStackIO_7.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FactoryStackIO_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\StackByte_logo_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

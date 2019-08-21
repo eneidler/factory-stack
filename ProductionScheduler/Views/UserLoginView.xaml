@@ -42,7 +42,7 @@
             Margin="0,0,0,10"
             HorizontalAlignment="Center"
             Opacity="90"
-            Source="/Images/FactoryStackIO_6.png" />
+            Source="/Images/FactoryStackIO_8.png" />
 
         <TextBlock
             Grid.Row="3"
