@@ -16,12 +16,12 @@ namespace ProductionScheduler.ViewModels
     {
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();
+        private Press _selectedPressNumber;
+        private Mold _selectedMoldNumber;
         private Part _selectedPartNumber;
         private IList<Part> _availablePartList = new ObservableCollection<Part>();
         private IList<Mold> _availableMoldList = new ObservableCollection<Mold>();
-        private Mold _selectedMoldNumber;
         private IList<Press> _availablePressList = new ObservableCollection<Press>();
-        private Press _selectedPressNumber;
         private int _jobQuantity;
         private string _additionalNotes;
         private RelayCommand<object> _addJobCommand;
@@ -37,6 +37,7 @@ namespace ProductionScheduler.ViewModels
             set
             {
                 _selectedPartNumber = value;
+                NotifyOnPropertyChanged(nameof(SelectedPartNumber));
                 NotifyOnPropertyChanged(nameof(AvailableMoldList));
             }
         }
@@ -66,21 +67,18 @@ namespace ProductionScheduler.ViewModels
         {
             get
             {
-                using (var context = new ProductionSchedulerContext())
-                {
-                    var query = from p in context.Parts
+                    var query = from p in _context.Parts
                                 select p;
 
                     var usableParts = query.ToList();
                     _availablePartList = usableParts;
-                }
+
                 return _availablePartList;
             }
-            set
-            {
-                _availablePartList = value;
-
-            }
+            //set
+            //{
+            //    _availablePartList = value;
+            //}
         }
 
         public IList<Mold> AvailableMoldList
@@ -95,10 +93,10 @@ namespace ProductionScheduler.ViewModels
                 _availableMoldList = usableMolds;
                 return _availableMoldList;
             }
-            set
-            {
-                _availableMoldList = value;
-            }
+            //set
+            //{
+            //    _availableMoldList = value;
+            //}
         }
 
         public IList<Press> AvailablePressList
@@ -113,11 +111,11 @@ namespace ProductionScheduler.ViewModels
                 _availablePressList = usablePresses;
                 return _availablePressList;
             }
-            set
-            {
-                _availablePressList = value;
+            //set
+            //{
+            //    _availablePressList = value;
 
-            }
+            //}
         }
 
         public int JobQuantity

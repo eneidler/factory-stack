@@ -14,8 +14,8 @@ namespace ProductionScheduler.Services
 {
     public sealed class ViewStateManager : BaseViewModel
     {
-        private static readonly object padlock = new object();
-        private static ViewStateManager instance = null;
+        private static readonly object _padlock = new object();
+        private static ViewStateManager _instance = null;
         private int _switchView;
         private string _currentUser;
         private AccessLevels _accessLevel;
@@ -31,13 +31,13 @@ namespace ProductionScheduler.Services
         {
             get
             {
-                lock (padlock)
+                lock (_padlock)
                 {
-                    if (instance == null)
+                    if (_instance == null)
                     {
-                        instance = new ViewStateManager();
+                        _instance = new ViewStateManager();
                     }
-                    return instance;
+                    return _instance;
                 }
             }
         }

@@ -9,7 +9,7 @@ using ProductionScheduler.Services;
 
 namespace ProductionScheduler.Models
 {
-    class Job //: IJobCreator
+    public class Job 
     {
         private const int _initializingJobNumber = 0;
         private const int _jobCounter = 1;

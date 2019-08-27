@@ -25,7 +25,7 @@ namespace ProductionScheduler.Views
     public partial class AddJobView : Window, ITextValidation
     {
 
-        ProductionSchedulerContext _context = new ProductionSchedulerContext();
+        //ProductionSchedulerContext _context = new ProductionSchedulerContext();
 
         public AddJobView()
         {

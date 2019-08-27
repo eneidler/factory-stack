@@ -93,7 +93,6 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             DisplayMemberPath="PartNumber"
-            IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding AvailablePartList}"
             SelectedIndex="0"
             SelectedItem="{Binding SelectedPartNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

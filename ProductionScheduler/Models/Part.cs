@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionScheduler.Models
 {
-    class Part
+    public class Part
     {
         public int Id { get; set; }
         public string PartNumber { get; set; }

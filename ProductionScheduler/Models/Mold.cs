@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionScheduler.Models
 {
-    class Mold
+    public class Mold
     {
 
         public int Id { get; set; }
