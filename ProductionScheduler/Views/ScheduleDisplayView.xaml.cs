@@ -23,9 +23,7 @@ namespace ProductionScheduler.Views
     {
         public ScheduleDisplayView()
         {
-            InitializeComponent();
-
-        
+            InitializeComponent();          
         }
         
         

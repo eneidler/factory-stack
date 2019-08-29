@@ -1,4 +1,5 @@
 ﻿using ProductionScheduler.Models;
+using ProductionScheduler.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,11 +49,6 @@ namespace ProductionScheduler.Services
 
                 return _activeJobList;
             }
-            set
-            {
-                _activeJobList = value;
-            }
         }
-
     }
 }

@@ -14,6 +14,7 @@ namespace ProductionScheduler.Models
         private const int _initializingJobNumber = 0;
         private const int _jobCounter = 1;
         private const int _firstTimeJobNumber = 1;
+        private const int _tenBusinessDays = 10;
 
         public Job()
         {
@@ -46,7 +47,7 @@ namespace ProductionScheduler.Models
                 IsComplete = false,
                 IsPaused = false,
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(10),
+                EndDate = DateTime.Now.AddDays(_tenBusinessDays),
                 JobNumber = _initializingJobNumber
             };
 

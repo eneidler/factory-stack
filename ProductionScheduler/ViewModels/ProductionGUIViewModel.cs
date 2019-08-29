@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ProductionScheduler.Interfaces;
 using ProductionScheduler.Models;
 using ProductionScheduler.Services;
 using ProductionScheduler.Views;
@@ -21,10 +22,11 @@ namespace ProductionScheduler.ViewModels
         private ICommand _addMoldWindowCommand;
         private ICommand _addJobWindowCommand;
         private ICommand _scheduleViewCommand;
-        private ObservableCollection<Job> _bindingJobList = new ObservableCollection<Job>(JobManager.Instance.ActiveJobList as IList<Job>);
+        //private IList<Job> _bindingJobList;
 
         public ProductionGUIViewModel()
         {
+            //_bindingJobList = new ObservableCollection<Job>(JobManager.Instance.ActiveJobList as IList<Job>);
         }
 
         public ICommand AddPartWindowCommand
@@ -49,13 +51,21 @@ namespace ProductionScheduler.ViewModels
 
         public ICommand ScheduleViewCommand
         {
-            get => _scheduleViewCommand = new RelayCommand<object>(_ => SwitchToScheduleView());
+            get => _scheduleViewCommand = new RelayCommand<object>(_ => ToggleScheduleView()); //Switches visible user control in main GUI via a data trigger
         }
 
-        public ObservableCollection<Job> BindingJobList
+        public IList<Job> BindingJobList
         {
-            get => _bindingJobList;
+            get => new ObservableCollection<Job>(JobManager.Instance.ActiveJobList as IList<Job>);
         }
+
+        public Job ActiveJobOne { get => BindingJobList[0]; }
+
+        public Job ActiveJobTwo { get => BindingJobList[1]; }
+
+        public Job ActiveJobThree { get => BindingJobList[2]; }
+
+        public Job ActiveJobFour { get => BindingJobList[3]; }
 
         private void NewAddJobWindow()
         {
@@ -81,7 +91,7 @@ namespace ProductionScheduler.ViewModels
             addMoldView.ShowDialog();
         }
 
-        private void SwitchToScheduleView()
+        private void ToggleScheduleView()
         {
             ViewStateManager.Instance.SwitchView = (int)ViewOptions.SchedulingView;
         }

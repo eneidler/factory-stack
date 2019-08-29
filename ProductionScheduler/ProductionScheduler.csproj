@@ -335,6 +335,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="ProductionSchedulerClassDiagram.cd" />
     <None Include="ProductionScheduler_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\ProductionScheduler.Models.Mold.datasource" />
     <None Include="Properties\DataSources\ProductionScheduler.Models.Part.datasource" />

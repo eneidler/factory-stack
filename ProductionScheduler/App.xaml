@@ -30,8 +30,8 @@
         <!--  Press display button styles  -->
         <Style x:Key="pressDisplayButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="250" />
-            <Setter Property="Width" Value="500" />
-            <Setter Property="Margin" Value="100,50" />
+            <Setter Property="Width" Value="400" />
+            <Setter Property="Margin" Value="100,25" />
             <Setter Property="Background" Value="#CCE0DC" />
         </Style>
 

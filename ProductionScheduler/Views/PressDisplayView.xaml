@@ -74,23 +74,40 @@
             x:Name="PressOneButton"
             Grid.Row="1"
             Style="{StaticResource pressDisplayButtonStyle}">
-            <ContentPresenter />
-            <!--  TODO: Add bindings/properties for Jobs in presses 1-4  -->
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{Binding ActiveJobOne}" />
         </Button>
         <Button
             x:Name="PressTwoButton"
             Grid.Row="2"
-            Style="{StaticResource pressDisplayButtonStyle}" />
+            Style="{StaticResource pressDisplayButtonStyle}">
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{Binding ActiveJobTwo}" />
+        </Button>
         <Button
             x:Name="PressThreeButton"
             Grid.Row="1"
             Grid.Column="1"
-            Style="{StaticResource pressDisplayButtonStyle}" />
+            Style="{StaticResource pressDisplayButtonStyle}">
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{Binding ActiveJobThree}" />
+        </Button>
         <Button
             x:Name="PressFourButton"
             Grid.Row="2"
             Grid.Column="1"
-            Style="{StaticResource pressDisplayButtonStyle}" />
+            Style="{StaticResource pressDisplayButtonStyle}">
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{Binding ActiveJobFour}" />
+        </Button>
 
 
         <!--  Job control buttons on button of Press Display  -->

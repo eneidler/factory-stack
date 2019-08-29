@@ -14,5 +14,6 @@ namespace ProductionScheduler.Models
         public string ProductDescription { get; set; }
         public int CureTimeInMinutes { get; set; }
         public IList<Mold> Molds { get; set; }
+
     }
 }
