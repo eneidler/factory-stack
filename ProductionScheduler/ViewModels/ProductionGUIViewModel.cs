@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace ProductionScheduler.ViewModels
         private ICommand _addPressWindowCommand;
         private ICommand _addMoldWindowCommand;
         private ICommand _addJobWindowCommand;
+        private ICommand _scheduleViewCommand;
+        private ObservableCollection<Job> _bindingJobList = new ObservableCollection<Job>(JobManager.Instance.ActiveJobList as IList<Job>);
 
         public ProductionGUIViewModel()
         {
@@ -44,6 +47,16 @@ namespace ProductionScheduler.ViewModels
             get => _addJobWindowCommand = new RelayCommand<object>(_ => NewAddJobWindow());
         }
 
+        public ICommand ScheduleViewCommand
+        {
+            get => _scheduleViewCommand = new RelayCommand<object>(_ => SwitchToScheduleView());
+        }
+
+        public ObservableCollection<Job> BindingJobList
+        {
+            get => _bindingJobList;
+        }
+
         private void NewAddJobWindow()
         {
             AddJobView addJobView = new AddJobView();
@@ -66,6 +79,11 @@ namespace ProductionScheduler.ViewModels
         {
             AddMoldView addMoldView = new AddMoldView();
             addMoldView.ShowDialog();
+        }
+
+        private void SwitchToScheduleView()
+        {
+            ViewStateManager.Instance.SwitchView = (int)ViewOptions.SchedulingView;
         }
     }
 }

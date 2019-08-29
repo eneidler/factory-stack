@@ -93,7 +93,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\ISystemLogin.cs" />
-    <Compile Include="Interfaces\ITextValidation.cs" />
+    <Compile Include="Interfaces\IFieldValidation.cs" />
     <Compile Include="Migrations\201907161624277_AddUserContext.cs" />
     <Compile Include="Migrations\201907161624277_AddUserContext.Designer.cs">
       <DependentUpon>201907161624277_AddUserContext.cs</DependentUpon>
@@ -162,6 +162,9 @@
     <Compile Include="UserControls\PressButtonDisplay.xaml.cs">
       <DependentUpon>PressButtonDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ScheduleDisplayView.xaml.cs">
+      <DependentUpon>ScheduleDisplayView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AddJobViewModel.cs" />
     <Compile Include="ViewModels\AddMoldViewModel.cs" />
     <Compile Include="ViewModels\AddPartViewModel.cs" />
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PressButtonDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScheduleDisplayView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

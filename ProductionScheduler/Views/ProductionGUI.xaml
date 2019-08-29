@@ -33,6 +33,10 @@
         <DataTemplate x:Key="JobDisplayTemplate" DataType="{x:Type viewModel:ProductionGUIViewModel}">
             <view:JobDisplayView />
         </DataTemplate>
+
+        <DataTemplate x:Key="ScheduleDisplayTemplate" DataType="{x:Type viewModel:ProductionGUIViewModel}">
+            <view:ScheduleDisplayView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -107,6 +111,9 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding SwitchView, Source={x:Static services:ViewStateManager.Instance}}" Value="2">
                                 <Setter Property="ContentTemplate" Value="{StaticResource JobDisplayTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding SwitchView, Source={x:Static services:ViewStateManager.Instance}}" Value="3">
+                                <Setter Property="ContentTemplate" Value="{StaticResource ScheduleDisplayTemplate}" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

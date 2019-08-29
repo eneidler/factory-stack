@@ -1,6 +1,7 @@
 ﻿using ProductionScheduler.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,17 @@ namespace ProductionScheduler.Services
 
         public IList<Job> ActiveJobList
         {
-            get => _activeJobList;
+            get
+            {
+                using(ProductionSchedulerContext context = new ProductionSchedulerContext())
+                {
+                    var jobList = context.Jobs.Where(j => j.IsComplete == false);
+
+                    _activeJobList = jobList.ToList();
+                }
+
+                return _activeJobList;
+            }
             set
             {
                 _activeJobList = value;

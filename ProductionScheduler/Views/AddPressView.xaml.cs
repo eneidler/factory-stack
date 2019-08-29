@@ -20,7 +20,7 @@ namespace ProductionScheduler.Views
     /// <summary>
     /// Interaction logic for AddPressView.xaml
     /// </summary>
-    public partial class AddPressView : Window, ITextValidation
+    public partial class AddPressView : Window, IFieldValidation
     {
         public AddPressView()
         {

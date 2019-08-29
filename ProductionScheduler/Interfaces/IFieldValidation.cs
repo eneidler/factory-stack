@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionScheduler.Interfaces
 {
-    interface ITextValidation
+    interface IFieldValidation
     {
         void ClearAllFields();
         bool AllFieldsHaveEntries();

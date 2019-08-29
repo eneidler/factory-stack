@@ -23,7 +23,7 @@ namespace ProductionScheduler.Views
     /// <summary>
     /// Interaction logic for AddPartView.xaml
     /// </summary>
-    public partial class AddPartView : Window, ITextValidation
+    public partial class AddPartView : Window, IFieldValidation
     {
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();

@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace ProductionScheduler.ViewModels
 {
-    class AddJobViewModel : BaseViewModel, ITextValidation
+    class AddJobViewModel : BaseViewModel, IFieldValidation
     {
 
         ProductionSchedulerContext _context = new ProductionSchedulerContext();
