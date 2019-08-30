@@ -54,6 +54,7 @@
 
         <!--  Username and access level display  -->
         <StackPanel Grid.Column="1" Margin="0,0,0,0">
+            <TextBlock Text="{Binding PartTest, Source={x:Static services:JobManager.Instance}}"/>
             <TextBlock
                 Margin="0,0,20,0"
                 HorizontalAlignment="Right"

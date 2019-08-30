@@ -159,6 +159,9 @@
     <Compile Include="Models\ViewOptions.cs" />
     <Compile Include="Services\ViewStateManager.cs" />
     <Compile Include="Services\JobManager.cs" />
+    <Compile Include="UserControls\JobDisplay.xaml.cs">
+      <DependentUpon>JobDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PressButtonDisplay.xaml.cs">
       <DependentUpon>PressButtonDisplay.xaml</DependentUpon>
     </Compile>
@@ -248,9 +251,6 @@
     <Compile Include="Models\ProductFamily.cs" />
     <Compile Include="Services\ProductionSchedulerContext.cs" />
     <Compile Include="Services\RelayCommand.cs" />
-    <Compile Include="UserControls\JobDisplay.xaml.cs">
-      <DependentUpon>JobDisplay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ProductionGUIViewModel.cs" />
     <Compile Include="Views\JobDisplayView.xaml.cs">
