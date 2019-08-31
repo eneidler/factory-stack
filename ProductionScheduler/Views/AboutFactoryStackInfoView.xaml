@@ -24,7 +24,7 @@
             Margin="68.277,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Source="/ProductionScheduler;component/Images/FactoryStackIO_6.png" />
+            Source="/ProductionScheduler;component/Images/FactoryStackIO_8.png" />
         <StackPanel
             Grid.Row="1"
             Width="450"
@@ -46,12 +46,11 @@
                 VerticalAlignment="Center"
                 Content="Basic.IO Version 0.1.1" />
             <Label
-                Width="155.4"
                 Height="25.96"
                 Margin="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="© 2019 Glitchd Studios, ltd." />
+                Content="© 2019 StackByte Technologies, ltd." />
             <Label
                 Width="107.906"
                 Height="25.96"
@@ -65,7 +64,8 @@
                 Margin="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="FactoryStack.IO is a product of GS Software, A division of Glitchd Studios, ltd."
+                HorizontalContentAlignment="Center"
+                Content="FactoryStack.IO is a product of StackByte Technologies, ltd."
                 FontSize="9" />
             <Label
                 Width="313.824"

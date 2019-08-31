@@ -54,7 +54,7 @@
 
         <!--  Username and access level display  -->
         <StackPanel Grid.Column="1" Margin="0,0,0,0">
-            <TextBlock Text="{Binding PartTest, Source={x:Static services:JobManager.Instance}}"/>
+            <TextBlock Text="{Binding PartTest, Source={x:Static services:JobManager.Instance}}" />
             <TextBlock
                 Margin="0,0,20,0"
                 HorizontalAlignment="Right"
@@ -125,7 +125,7 @@
                 Margin="10,0"
                 Command="{Binding AddPartWindowCommand}"
                 Content="New Part"
-                FontSize="16"
+                FontSize="12"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new part to the database." />
@@ -136,7 +136,7 @@
                 Margin="10,0"
                 Command="{Binding AddPressWindowCommand}"
                 Content="New Press"
-                FontSize="16"
+                FontSize="12"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new press to the database." />
@@ -147,7 +147,7 @@
                 Margin="10,0"
                 Command="{Binding AddMoldWindowCommand}"
                 Content="New Mold"
-                FontSize="16"
+                FontSize="12"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new mold to the database for a new part number." />
@@ -158,7 +158,7 @@
                 Margin="10,0"
                 Command="{Binding AddJobWindowCommand}"
                 Content="New Job"
-                FontSize="16"
+                FontSize="12"
                 IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Create a new job in the system and add it to the schedule." />
@@ -169,7 +169,7 @@
                 Margin="10,0"
                 Command="{Binding ScheduleViewCommand}"
                 Content="Schedule"
-                FontSize="16"
+                FontSize="12"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="View, modify, or report out the current schedule." />
         </StackPanel>
@@ -188,7 +188,7 @@
                 Margin="0,0,20,0"
                 Command="{Binding LogoutCommand, Source={x:Static services:ViewStateManager.Instance}}"
                 Content="Logout"
-                FontSize="16"
+                FontSize="12"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Return to the main login screen." />
         </StackPanel>

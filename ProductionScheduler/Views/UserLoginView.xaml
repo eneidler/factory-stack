@@ -84,7 +84,7 @@
             Grid.Row="9"
             Margin="0,15,0,0"
             HorizontalContentAlignment="Center"
-            Content="FactoryStack.IO is a product of GS Software, A division of Glitchd Studios, ltd." />
+            Content="FactoryStack.IO is a product of StackByte Technologies, ltd." />
         <Label
             Grid.Row="10"
             HorizontalContentAlignment="Center"

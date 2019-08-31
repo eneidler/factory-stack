@@ -15,23 +15,39 @@
         <viewModel:ProductionGUIViewModel />
     </UserControl.DataContext>
 
-    <DataGrid
-        Name="scheduleDatagrid"
-        HorizontalAlignment="Center"
-        HorizontalContentAlignment="Center"
-        AutoGenerateColumns="False"
-        IsReadOnly="False"
-        ItemsSource="{Binding BindingJobList, Mode=OneWay}">
-        <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding JobNumber}" Header="Job Number" />
-            <DataGridTextColumn Binding="{Binding Part.PartNumber}" Header="Part Number" />
-            <DataGridTextColumn Binding="{Binding Mold.MoldNumber}" Header="Mold Number" />
-            <DataGridTextColumn Binding="{Binding Press.PressNumber}" Header="Press Number" />
-            <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" />
-            <DataGridTextColumn Binding="{Binding StartDate}" Header="Job Start Date" />
-            <DataGridTextColumn Binding="{Binding IsPaused}" Header="Paused Status" />
-            <DataGridTextColumn Binding="{Binding JobNotes}" Header="Job Notes" />
-        </DataGrid.Columns>
-    </DataGrid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".2*" />
+        </Grid.RowDefinitions>
+
+        <DataGrid
+            Name="scheduleDatagrid"
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            AutoGenerateColumns="False"
+            IsReadOnly="False"
+            ItemsSource="{Binding BindingJobList, Mode=OneWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding JobNumber}" Header="Job Number" />
+                <DataGridTextColumn Binding="{Binding Part.PartNumber}" Header="Part Number" />
+                <DataGridTextColumn Binding="{Binding Mold.MoldNumber}" Header="Mold Number" />
+                <DataGridTextColumn Binding="{Binding Press.PressNumber}" Header="Press Number" />
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" />
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Job Start Date" />
+                <DataGridTextColumn Binding="{Binding IsPaused}" Header="Paused Status" />
+                <DataGridTextColumn Binding="{Binding JobNotes}" Header="Job Notes" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            Grid.Row="1"
+            Width="120"
+            Height="40"
+            Margin="10,10"
+            Command="{Binding ScheduleViewCommand}"
+            Content="Exit Schedule"
+            FontSize="12"
+            Style="{StaticResource controlButtonsStyle}" />
+    </Grid>
 
 </UserControl>

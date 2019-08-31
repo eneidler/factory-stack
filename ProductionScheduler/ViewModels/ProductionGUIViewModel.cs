@@ -93,7 +93,19 @@ namespace ProductionScheduler.ViewModels
 
         private void ToggleScheduleView()
         {
-            ViewStateManager.Instance.SwitchView = (int)ViewOptions.SchedulingView;
+
+            switch(ViewStateManager.Instance.SwitchView)
+            {
+                case (int)ViewOptions.SchedulingView:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.PressView;
+                    break;
+                case (int)ViewOptions.PressView:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.SchedulingView;
+                    break;
+                default:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.PressView;
+                    break;
+            }         
         }
     }
 }
