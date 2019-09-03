@@ -21,6 +21,9 @@ namespace ProductionScheduler.ViewModels {
         private Job _leftVacuumPressJobs;
         private Job _rightVacuumPressJobs;
         private string _largePressBackgroundColor;
+        private string _smallPressBackgroundColor;
+        private string _leftVacuumPressBackgroundColor;
+        private string _rightVacuumPressBackgroundColor;
 
         //private IList<Job> _bindingJobList;
 
@@ -101,6 +104,30 @@ namespace ProductionScheduler.ViewModels {
             set {
                 _largePressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(LargePressJobs));
+            }
+        }
+
+        public string SmallPressBackgroundColor {
+            get => _smallPressBackgroundColor = GetBackgroundColor(SmallPressJobs.IsPaused, SmallPressJobs.IssueFlagged);
+            set {
+                _smallPressBackgroundColor = value;
+                NotifyOnPropertyChanged(nameof(SmallPressJobs));
+            }
+        }
+
+        public string LeftVacuumPressBackgroundColor {
+            get => _leftVacuumPressBackgroundColor = GetBackgroundColor(LeftVacuumPressJobs.IsPaused, LeftVacuumPressJobs.IssueFlagged);
+            set {
+                _leftVacuumPressBackgroundColor = value;
+                NotifyOnPropertyChanged(nameof(LeftVacuumPressJobs));
+            }
+        }
+
+        public string RightVacuumPressBackgroundColor {
+            get => _rightVacuumPressBackgroundColor = GetBackgroundColor(RightVacuumPressJobs.IsPaused, RightVacuumPressJobs.IssueFlagged);
+            set {
+                _rightVacuumPressBackgroundColor = value;
+                NotifyOnPropertyChanged(nameof(RightVacuumPressJobs));
             }
         }
 

@@ -84,6 +84,7 @@
         <Button
             x:Name="PressTwoButton"
             Grid.Row="2"
+            Background="{Binding LeftVacuumPressBackgroundColor}"
             Command="{Binding ToggleJobViewCommand}"
             Style="{StaticResource pressDisplayButtonStyle}">
             <ContentPresenter
@@ -95,6 +96,7 @@
             x:Name="PressThreeButton"
             Grid.Row="1"
             Grid.Column="1"
+            Background="{Binding SmallPressBackgroundColor}"
             Command="{Binding ToggleJobViewCommand}"
             Style="{StaticResource pressDisplayButtonStyle}">
             <ContentPresenter
@@ -106,6 +108,7 @@
             x:Name="PressFourButton"
             Grid.Row="2"
             Grid.Column="1"
+            Background="{Binding RightVacuumPressBackgroundColor}"
             Command="{Binding ToggleJobViewCommand}"
             Style="{StaticResource pressDisplayButtonStyle}">
             <ContentPresenter
