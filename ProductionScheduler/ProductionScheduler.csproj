@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201908201856336_relationshipTest.Designer.cs">
       <DependentUpon>201908201856336_relationshipTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909031705001_AddIssueFlaggedColumn.cs" />
+    <Compile Include="Migrations\201909031705001_AddIssueFlaggedColumn.Designer.cs">
+      <DependentUpon>201909031705001_AddIssueFlaggedColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin\AccessLevels.cs" />
     <Compile Include="Models\UserLogin\User.cs" />
     <Compile Include="Models\ViewOptions.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908201856336_relationshipTest.resx">
       <DependentUpon>201908201856336_relationshipTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909031705001_AddIssueFlaggedColumn.resx">
+      <DependentUpon>201909031705001_AddIssueFlaggedColumn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

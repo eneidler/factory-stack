@@ -97,7 +97,7 @@ namespace ProductionScheduler.ViewModels {
 
         //TODO: Determine if there is a better way to control background color for press display buttons
         public string LargePressBackgroundColor {
-            get => _largePressBackgroundColor = GetBackgroundColor(LargePressJobs.IsPaused);
+            get => _largePressBackgroundColor = GetBackgroundColor(LargePressJobs.IsPaused, LargePressJobs.IssueFlagged);
             set {
                 _largePressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(LargePressJobs));
@@ -153,9 +153,11 @@ namespace ProductionScheduler.ViewModels {
             }
         }
 
-        private static string GetBackgroundColor(bool isPaused) {
+        private static string GetBackgroundColor(bool isPaused, bool issueFlagged) {
             string backgroundColor;
-            if (isPaused == true)
+            if ((isPaused == false || isPaused == true) && issueFlagged == true)
+                backgroundColor = "Red";
+            else if (isPaused == true && issueFlagged == false)
                 backgroundColor = "Yellow";
             else
                 backgroundColor = "#CCE0DC";

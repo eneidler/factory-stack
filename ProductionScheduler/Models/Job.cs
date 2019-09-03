@@ -23,6 +23,7 @@ namespace ProductionScheduler.Models {
         public string JobNotes { get; set; }
         public bool IsComplete { get; set; }
         public bool IsPaused { get; set; }
+        public bool IssueFlagged { get; set; }
         [Column(TypeName = "datetime2")]
         public DateTime StartDate { get; set; }
         [Column(TypeName = "datetime2")]
