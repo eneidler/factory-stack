@@ -1,34 +1,16 @@
 ﻿using ProductionScheduler.Interfaces;
-using ProductionScheduler.Models;
-using ProductionScheduler.Services;
-using ProductionScheduler.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace ProductionScheduler.Views
-{
+namespace ProductionScheduler.Views {
     /// <summary>
     /// Interaction logic for AddJobView.xaml
     /// </summary>
-    public partial class AddJobView : Window, IFieldValidation
-    {
+    public partial class AddJobView : Window, IFieldValidation {
 
         //ProductionSchedulerContext _context = new ProductionSchedulerContext();
 
-        public AddJobView()
-        {
+        public AddJobView() {
             InitializeComponent();
         }
 
@@ -44,11 +26,9 @@ namespace ProductionScheduler.Views
         //    partViewSource.Source = _context.Parts.Local;
         //}
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void CloseButton_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Job", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
-            switch (result)
-            {
+            switch (result) {
                 case MessageBoxResult.OK:
                     this.Close();
                     break;
@@ -58,8 +38,7 @@ namespace ProductionScheduler.Views
             }
         }
 
-        public void ClearAllFields()
-        {
+        public void ClearAllFields() {
             //TODO: Finish or remove ITextValidation implementation
             //private void btnClick(object sender, RoutedEventArgs e)
             //{
@@ -68,17 +47,13 @@ namespace ProductionScheduler.Views
             //}
         }
 
-        public bool AllFieldsHaveEntries()
-        {
+        public bool AllFieldsHaveEntries() {
             return true; //TODO: Add actual logic. This is in place for program testing.
         }
 
-        private void JobQuantityTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            foreach (char c in e.Text)
-            {
-                if (!char.IsDigit(c))
-                {
+        private void JobQuantityTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e) {
+            foreach (char c in e.Text) {
+                if (!char.IsDigit(c)) {
                     e.Handled = true;
                     break;
                 }

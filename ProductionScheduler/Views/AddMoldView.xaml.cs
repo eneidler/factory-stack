@@ -2,37 +2,24 @@
 using ProductionScheduler.Models;
 using ProductionScheduler.Services;
 using ProductionScheduler.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace ProductionScheduler.Views
-{
+namespace ProductionScheduler.Views {
     /// <summary>
     /// Interaction logic for AddMoldView.xaml
     /// </summary>
-    public partial class AddMoldView : Window, IFieldValidation
-    {
-        ProductionSchedulerContext _context = new ProductionSchedulerContext();
+    public partial class AddMoldView : Window, IFieldValidation {
+        private readonly ProductionSchedulerContext _context = new ProductionSchedulerContext();
 
-        public AddMoldView()
-        {
+        public AddMoldView() {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
 
             CollectionViewSource pressViewSource = ((CollectionViewSource)(this.FindResource("pressViewSource")));
             // Load is an extension method on IQueryable,
@@ -47,14 +34,12 @@ namespace ProductionScheduler.Views
             // to use the DbSet<T> as a binding source.
             pressViewSource.Source = _context.Presses.Local;
 
-            
+
         }
 
-        private void CancelNewMoldButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void CancelNewMoldButton_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Mold", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
-            switch (result)
-            {
+            switch (result) {
                 case MessageBoxResult.OK:
                     this.Close();
                     break;
@@ -64,10 +49,8 @@ namespace ProductionScheduler.Views
             }
         }
 
-        private void AddNewMoldButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (var context = new ProductionSchedulerContext())
-            {
+        private void AddNewMoldButton_Click(object sender, RoutedEventArgs e) {
+            using (var context = new ProductionSchedulerContext()) {
                 var query = from m in context.Molds
                             where m.MoldNumber == MoldNumberTextbox.Text
                             select m;
@@ -77,25 +60,21 @@ namespace ProductionScheduler.Views
                 if (AllFieldsHaveEntries() != true)
                     MessageBox.Show("All fields are required. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (AllFieldsHaveEntries() == true)
-                {
-                    if (moldNumber == null)
-                    {
+                if (AllFieldsHaveEntries() == true) {
+                    if (moldNumber == null) {
                         IList<Press> pressesToAdd = new List<Press>();
 
-                        foreach(string press in ActivePressNumberListbox.Items)
-                        {
+                        foreach (string press in ActivePressNumberListbox.Items) {
                             var pressQuery = from p in context.Presses
-                                           where p.PressNumber == press
-                                           select p;
+                                             where p.PressNumber == press
+                                             select p;
 
                             var newPress = pressQuery.SingleOrDefault();
 
                             pressesToAdd.Add(newPress);
                         }
 
-                        var mold = new Mold()
-                        {
+                        var mold = new Mold() {
                             MoldNumber = MoldNumberTextbox.Text,
                             NumberOfCavities = int.Parse(NumberOfCavitiesTextbox.Text),
                             Presses = pressesToAdd,
@@ -107,36 +86,30 @@ namespace ProductionScheduler.Views
                         MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearAllFields();
                     }
-                    if (moldNumber != null)
-                    {
+                    if (moldNumber != null) {
                         MessageBox.Show("This mold number already exists.", "Mold entry error.", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
-        }    
-        
+        }
 
-        public void ClearAllFields()
-        {
+
+        public void ClearAllFields() {
             MoldNumberTextbox.Text = "";
             NumberOfCavitiesTextbox.Text = "";
             var viewModel = (AddMoldViewModel)DataContext;
             viewModel.ActiveListPresses.Clear();
-            
+
         }
 
-        public bool AllFieldsHaveEntries()
-        {
+        public bool AllFieldsHaveEntries() {
             if (
             MoldNumberTextbox.Text == "" ||
             NumberOfCavitiesTextbox.Text == "" ||
             ActivePressNumberListbox.Items.Count <= 0
-            )
-            {
+            ) {
                 return false;
-            }
-            else
-            {
+            } else {
                 return true;
             }
         }

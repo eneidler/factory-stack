@@ -1,19 +1,12 @@
-namespace ProductionScheduler.Migrations
-{
-    using System;
-    using System.Data.Entity;
+namespace ProductionScheduler.Migrations {
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ProductionScheduler.Services.ProductionSchedulerContext>
-    {
-        public Configuration()
-        {
+    internal sealed class Configuration : DbMigrationsConfiguration<ProductionScheduler.Services.ProductionSchedulerContext> {
+        public Configuration() {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ProductionScheduler.Services.ProductionSchedulerContext context)
-        {
+        protected override void Seed(ProductionScheduler.Services.ProductionSchedulerContext context) {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

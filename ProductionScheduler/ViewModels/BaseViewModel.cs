@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace ProductionScheduler.ViewModels
-{
-    public class BaseViewModel : INotifyPropertyChanged
-    {
+namespace ProductionScheduler.ViewModels {
+    public class BaseViewModel : INotifyPropertyChanged {
         //Property change event handler
         /// <summary>
         /// This property change event handler will be used to tie in PropertyChanged notifications
@@ -16,8 +9,7 @@ namespace ProductionScheduler.ViewModels
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyOnPropertyChanged(string name)
-        {
+        public void NotifyOnPropertyChanged(string name) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }

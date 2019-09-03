@@ -1,36 +1,21 @@
 ﻿using ProductionScheduler.Interfaces;
 using ProductionScheduler.Models;
 using ProductionScheduler.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace ProductionScheduler.Views
-{
+namespace ProductionScheduler.Views {
     /// <summary>
     /// Interaction logic for AddPressView.xaml
     /// </summary>
-    public partial class AddPressView : Window, IFieldValidation
-    {
-        public AddPressView()
-        {
+    public partial class AddPressView : Window, IFieldValidation {
+        public AddPressView() {
             InitializeComponent();
         }
 
-        private void AddPressButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (var context = new ProductionSchedulerContext())
-            {
+        private void AddPressButton_Click(object sender, RoutedEventArgs e) {
+            using (var context = new ProductionSchedulerContext()) {
                 var query = from p in context.Presses
                             where p.PressNumber == PressNumberTextbox.Text
                             select p;
@@ -40,12 +25,9 @@ namespace ProductionScheduler.Views
                 if (AllFieldsHaveEntries() != true)
                     MessageBox.Show("All fields are required. Please enter data into textboxes.", "Invalid Entry Attempt", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (AllFieldsHaveEntries() == true)
-                {
-                    if (pressNumber == null)
-                    {
-                        var press = new Press()
-                        {
+                if (AllFieldsHaveEntries() == true) {
+                    if (pressNumber == null) {
+                        var press = new Press() {
                             PressNumber = PressNumberTextbox.Text,
                             PressCapacity = PressCapacityTextbox.Text,
                             Molds = new List<Mold>()
@@ -56,19 +38,16 @@ namespace ProductionScheduler.Views
                         MessageBox.Show("Record added successfully!", "Record Added", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearAllFields();
                     }
-                    if (pressNumber != null)
-                    {
+                    if (pressNumber != null) {
                         MessageBox.Show("This resource already exists.", "Resource entry error.", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
         }
 
-        private void CancelPressAddButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void CancelPressAddButton_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to leave this screen?", "Cancel New Press", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
-            switch (result)
-            {
+            switch (result) {
                 case MessageBoxResult.OK:
                     this.Close();
                     break;
@@ -78,23 +57,18 @@ namespace ProductionScheduler.Views
             }
         }
 
-        public void ClearAllFields()
-        {
+        public void ClearAllFields() {
             PressNumberTextbox.Text = null;
             PressCapacityTextbox.Text = null;
         }
 
-        public bool AllFieldsHaveEntries()
-        {
+        public bool AllFieldsHaveEntries() {
             if (
             PressNumberTextbox.Text == "" ||
             PressCapacityTextbox.Text == ""
-            )
-            {
+            ) {
                 return false;
-            }
-            else
-            {
+            } else {
                 return true;
             }
         }

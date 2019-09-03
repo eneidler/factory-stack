@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProductionScheduler.Services;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProductionScheduler.Interfaces;
-using ProductionScheduler.Services;
 
-namespace ProductionScheduler.Models
-{
-    public class Job 
-    {
+namespace ProductionScheduler.Models {
+    public class Job {
         private const int _initializingJobNumber = 0;
         private const int _jobCounter = 1;
         private const int _firstTimeJobNumber = 1;
         private const int _tenBusinessDays = 10;
 
-        public Job()
-        {
+        public Job() {
 
         }
 
@@ -37,11 +30,9 @@ namespace ProductionScheduler.Models
 
         public static Job GenerateNewJob(
                int quantity,
-               string jobNotes)
-        {
+               string jobNotes) {
 
-            Job job = new Job()
-            {
+            Job job = new Job() {
                 Quantity = quantity,
                 JobNotes = jobNotes,
                 IsComplete = false,
@@ -54,24 +45,19 @@ namespace ProductionScheduler.Models
             return job;
         }
 
-        public static void AssignJobNumber(Job job)
-        {
-            using (ProductionSchedulerContext context = new ProductionSchedulerContext())
-            {
+        public static void AssignJobNumber(Job job) {
+            using (ProductionSchedulerContext context = new ProductionSchedulerContext()) {
                 var storedJobCount = context.Jobs.Count(); //This is used to establish an initial job number for the first job entered, otherwise 'searchJobNumber' will return null and throw an exception.
                 if (storedJobCount <= 0)
                     job.JobNumber = _firstTimeJobNumber;
 
-                if (storedJobCount > 0)
-                {
+                if (storedJobCount > 0) {
                     var searchJobNumber = context.Jobs.Max(j => j.JobNumber);
 
-                    if (searchJobNumber <= _initializingJobNumber)
-                    {
+                    if (searchJobNumber <= _initializingJobNumber) {
                         job.JobNumber = _firstTimeJobNumber;
                     }
-                    if (searchJobNumber > _initializingJobNumber)
-                    {
+                    if (searchJobNumber > _initializingJobNumber) {
                         job.JobNumber = searchJobNumber + _jobCounter;
                     }
                 }

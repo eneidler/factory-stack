@@ -1,20 +1,12 @@
 ﻿using ProductionScheduler.Models;
 using ProductionScheduler.Models.UserLogin;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProductionScheduler.Services
-{
-    class ProductionSchedulerContext : DbContext
-    {
+namespace ProductionScheduler.Services {
+    internal class ProductionSchedulerContext : DbContext {
 
         public ProductionSchedulerContext()
-            :base("name=DefaultConnection")
-        {
+            : base("name=DefaultConnection") {
 
         }
 

@@ -1,40 +1,29 @@
-﻿using ProductionScheduler.Interfaces;
+﻿using ProductionScheduler.Models;
 using ProductionScheduler.Models.UserLogin;
 using ProductionScheduler.ViewModels;
-using ProductionScheduler.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ProductionScheduler.Services
-{
-    public sealed class ViewStateManager : BaseViewModel
-    {
+namespace ProductionScheduler.Services {
+    public sealed class ViewStateManager : BaseViewModel {
         private static readonly object _padlock = new object();
         private static ViewStateManager _instance = null;
         private int _switchView;
         private string _currentUser;
         private AccessLevels _accessLevel;
         private ICommand _logoutCommand;
-        private bool _buttonEnableState;
+        private bool _adminEnableButtonState;
+        private bool _supervisorEnableButtonState;
 
-        private ViewStateManager()
-        {
+        private ViewStateManager() {
 
         }
 
-        public static ViewStateManager Instance
-        {
-            get
-            {
-                lock (_padlock)
-                {
-                    if (_instance == null)
-                    {
+        public static ViewStateManager Instance {
+            get {
+                lock (_padlock) {
+                    if (_instance == null) {
                         _instance = new ViewStateManager();
                     }
                     return _instance;
@@ -42,11 +31,9 @@ namespace ProductionScheduler.Services
             }
         }
 
-        public int SwitchView
-        {
+        public int SwitchView {
             get => _switchView;
-            set
-            {
+            set {
                 _switchView = value;
                 NotifyOnPropertyChanged(nameof(SwitchView));
             }
@@ -55,73 +42,70 @@ namespace ProductionScheduler.Services
 
 
 
-        public string CurrentUser
-        {
+        public string CurrentUser {
             get => _currentUser;
-            set { _currentUser = value; }
+            set => _currentUser = value;
         }
 
 
 
-        public AccessLevels AccessLevel
-        {
+        public AccessLevels AccessLevel {
             get => _accessLevel;
-            set { _accessLevel = value; }
+            set => _accessLevel = value;
         }
 
 
-        public bool ButtonEnableState
-        {
-            get
-            {
-                if (_accessLevel == AccessLevels.Production)
-                    _buttonEnableState = false;
-                else
-                    _buttonEnableState = true;
-                return _buttonEnableState;
+        public bool AdminEnableButtonState {
+            get {
+                if (_accessLevel == AccessLevels.Admin)
+                    _adminEnableButtonState = true;
+                if (_accessLevel != AccessLevels.Admin)
+                    _adminEnableButtonState = false;
+                return _adminEnableButtonState;
             }
-            set
-            {
-                _buttonEnableState = value;
+            set => _adminEnableButtonState = value;
+        }
+
+        public bool SupervisorEnableButtonState {
+            get {
+                if (_accessLevel >= AccessLevels.Supervisor)
+                    _supervisorEnableButtonState = true;
+                if (_accessLevel < AccessLevels.Supervisor)
+                    _supervisorEnableButtonState = false;
+                return _supervisorEnableButtonState;
             }
-        }
-
-
-        public ICommand LogoutCommand
-        {
-            get => _logoutCommand = new RelayCommand<object>(_ => LogoutCurrentUser());
+            set => _supervisorEnableButtonState = value;
         }
 
 
 
 
-        public void ChangeCurrentView(ViewOptions newView)
-        {
+        public ICommand LogoutCommand => _logoutCommand = new RelayCommand<object>(_ => LogoutCurrentUser());
+
+
+
+
+        public void ChangeCurrentView(ViewOptions newView) {
             SwitchView = (int)newView;
         }
 
-        public void SetCurrentUser(string username)
-        {
+        public void SetCurrentUser(string username) {
             CurrentUser = username;
         }
 
-        public void SetUserAccessLevel(string currentUser)
-        {
-            using (var context = new ProductionSchedulerContext())
-            {
+        public void SetUserAccessLevel(string currentUser) {
+            using (var context = new ProductionSchedulerContext()) {
                 var accessLevel = (from c in context.Users
-                            where c.Username == currentUser
-                            select c).SingleOrDefault();
+                                   where c.Username == currentUser
+                                   select c).SingleOrDefault();
 
                 AccessLevel = accessLevel.AccessLevel;
             }
         }
 
-        public void LogoutCurrentUser()
-        {
+        public void LogoutCurrentUser() {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "FactoryStack.IO Logout", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            switch (result)
-            {
+            switch (result) {
                 case MessageBoxResult.OK:
                     SwitchView = (int)ViewOptions.LoginView;
                     break;
@@ -129,7 +113,7 @@ namespace ProductionScheduler.Services
                     //Do nothing
                     break;
             }
-                    
+
         }
     }
 }

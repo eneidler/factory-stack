@@ -74,12 +74,13 @@
         <Button
             x:Name="PressOneButton"
             Grid.Row="1"
+            Background="{Binding LargePressBackgroundColor}"
             Command="{Binding ToggleJobViewCommand}"
             Style="{StaticResource pressDisplayButtonStyle}">
             <ContentPresenter
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="{Binding ActiveJobOne}" />
+                Content="{Binding LargePressJobs}" />
         </Button>
         <Button
             x:Name="PressTwoButton"
@@ -89,7 +90,7 @@
             <ContentPresenter
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="{Binding ActiveJobTwo}" />
+                Content="{Binding LeftVacuumPressJobs}" />
         </Button>
         <Button
             x:Name="PressThreeButton"
@@ -100,7 +101,7 @@
             <ContentPresenter
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="{Binding ActiveJobThree}" />
+                Content="{Binding SmallPressJobs}" />
         </Button>
         <Button
             x:Name="PressFourButton"
@@ -111,7 +112,7 @@
             <ContentPresenter
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="{Binding ActiveJobFour}" />
+                Content="{Binding RightVacuumPressJobs}" />
         </Button>
 
 
@@ -130,7 +131,7 @@
                 Command="{Binding AddPartWindowCommand}"
                 Content="New Part"
                 FontSize="12"
-                IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
+                IsEnabled="{Binding AdminEnableButtonState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new part to the database." />
             <Button
@@ -141,7 +142,7 @@
                 Command="{Binding AddPressWindowCommand}"
                 Content="New Press"
                 FontSize="12"
-                IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
+                IsEnabled="{Binding AdminEnableButtonState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new press to the database." />
             <Button
@@ -152,7 +153,7 @@
                 Command="{Binding AddMoldWindowCommand}"
                 Content="New Mold"
                 FontSize="12"
-                IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
+                IsEnabled="{Binding AdminEnableButtonState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Add a new mold to the database for a new part number." />
             <Button
@@ -163,7 +164,7 @@
                 Command="{Binding AddJobWindowCommand}"
                 Content="New Job"
                 FontSize="12"
-                IsEnabled="{Binding ButtonEnableState, Source={x:Static services:ViewStateManager.Instance}}"
+                IsEnabled="{Binding SupervisorEnableButtonState, Source={x:Static services:ViewStateManager.Instance}}"
                 Style="{StaticResource controlButtonsStyle}"
                 ToolTip="Create a new job in the system and add it to the schedule." />
             <Button

@@ -1,17 +1,12 @@
-namespace ProductionScheduler.Migrations
-{
-    using System;
+namespace ProductionScheduler.Migrations {
     using System.Data.Entity.Migrations;
-    
-    public partial class JobListToPartModel : DbMigration
-    {
-        public override void Up()
-        { 
-            
+
+    public partial class JobListToPartModel : DbMigration {
+        public override void Up() {
+
         }
-        
-        public override void Down()
-        {
+
+        public override void Down() {
         }
     }
 }

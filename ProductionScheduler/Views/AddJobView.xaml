@@ -65,7 +65,7 @@
             Margin="0"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Content="Job Quantity:" />
+            Content="Parts Required:" />
         <Label
             Grid.Row="5"
             Margin="0"

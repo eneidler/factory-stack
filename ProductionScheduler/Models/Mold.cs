@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace ProductionScheduler.Models
-{
-    public class Mold
-    {
+namespace ProductionScheduler.Models {
+    public class Mold {
 
         public int Id { get; set; }
         public string MoldNumber { get; set; }
