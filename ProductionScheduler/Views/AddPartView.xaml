@@ -84,8 +84,7 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Height="30"
-            Margin="10"
-            PreviewTextInput="PartNumberTextbox_PreviewTextInput" />
+            Margin="10" />
         <TextBox
             x:Name="ProductFamilyTextbox"
             Grid.Row="2"

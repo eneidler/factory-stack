@@ -17,32 +17,35 @@
                 x:Name="pressTextblock"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="20"
+                FontSize="26"
                 Text="{Binding Press.PressNumber, StringFormat='Press: {0}'}" />
-            <TextBlock
-                x:Name="jobTextblock"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="20"
-                Text="{Binding JobNumber, StringFormat='Job: {0}'}" />
             <TextBlock
                 x:Name="partTextblock"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="20"
+                FontSize="24"
                 Text="{Binding Part.PartNumber, StringFormat='Part Number: {0}'}" />
+
+            <Separator />
+
             <TextBlock
                 x:Name="moldTextblock"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="20"
+                FontSize="16"
                 Text="{Binding Mold.MoldNumber, StringFormat='Mold: {0}'}" />
             <TextBlock
                 x:Name="quantityTextblock"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="20"
+                FontSize="16"
                 Text="{Binding Quantity, StringFormat='Quantity Req.: {0}'}" />
+            <TextBlock
+                x:Name="jobTextblock"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Text="{Binding JobNumber, StringFormat='Job # {0}'}" />
         </StackPanel>
     </Grid>
 </UserControl>

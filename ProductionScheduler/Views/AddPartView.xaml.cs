@@ -137,18 +137,18 @@ namespace ProductionScheduler.Views
             }
         }
 
-        //HACK: Constrains text input for part number to alpha-numeric characters.
-        private void PartNumberTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            foreach (char c in e.Text)
-            {
-                if (!char.IsLetterOrDigit(c))
-                {
-                    e.Handled = true;
-                    break;
-                }
-            }
-        }
+        ////HACK: Constrains text input for part number to alpha-numeric characters.
+        //private void PartNumberTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    foreach (char c in e.Text)
+        //    {
+        //        if (!char.IsLetterOrDigit(c))
+        //        {
+        //            e.Handled = true;
+        //            break;
+        //        }
+        //    }
+        //}
 
         private void RefreshMoldListButton_Click(object sender, RoutedEventArgs e)
         {

@@ -22,6 +22,8 @@ namespace ProductionScheduler.ViewModels
         private ICommand _addMoldWindowCommand;
         private ICommand _addJobWindowCommand;
         private ICommand _scheduleViewCommand;
+        private ICommand _toggleJobViewCommand;
+
         //private IList<Job> _bindingJobList;
 
         public ProductionGUIViewModel()
@@ -52,6 +54,11 @@ namespace ProductionScheduler.ViewModels
         public ICommand ScheduleViewCommand
         {
             get => _scheduleViewCommand = new RelayCommand<object>(_ => ToggleScheduleView()); //Switches visible user control in main GUI via a data trigger
+        }
+
+        public ICommand ToggleJobViewCommand
+        {
+            get => _toggleJobViewCommand = new RelayCommand<object>(_ => ToggleJobView()); //Switches visible user control in main GUI via a data trigger
         }
 
         public IList<Job> BindingJobList
@@ -106,6 +113,22 @@ namespace ProductionScheduler.ViewModels
                     ViewStateManager.Instance.SwitchView = (int)ViewOptions.PressView;
                     break;
             }         
+        }
+
+        private void ToggleJobView()
+        {
+            switch (ViewStateManager.Instance.SwitchView)
+            {
+                case (int)ViewOptions.PressView:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.JobView;
+                    break;
+                case (int)ViewOptions.JobView:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.PressView;
+                    break;
+                default:
+                    ViewStateManager.Instance.SwitchView = (int)ViewOptions.JobView;
+                    break;
+            }
         }
     }
 }

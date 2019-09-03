@@ -25,8 +25,11 @@
             Name="scheduleDatagrid"
             HorizontalAlignment="Center"
             HorizontalContentAlignment="Center"
+            AlternatingRowBackground="LightGray"
             AutoGenerateColumns="False"
-            IsReadOnly="False"
+            BorderBrush="LightGray"
+            BorderThickness="3"
+            IsReadOnly="True"
             ItemsSource="{Binding BindingJobList, Mode=OneWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding JobNumber}" Header="Job Number" />
