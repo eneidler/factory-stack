@@ -38,6 +38,7 @@ namespace ProductionScheduler.Models {
                 JobNotes = jobNotes,
                 IsComplete = false,
                 IsPaused = false,
+                IssueFlagged = false,
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddDays(_tenBusinessDays),
                 JobNumber = _initializingJobNumber

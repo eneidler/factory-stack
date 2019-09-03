@@ -25,10 +25,7 @@ namespace ProductionScheduler.ViewModels {
         private string _leftVacuumPressBackgroundColor;
         private string _rightVacuumPressBackgroundColor;
 
-        //private IList<Job> _bindingJobList;
-
         public ProductionGUIViewModel() {
-            //_bindingJobList = new ObservableCollection<Job>(JobManager.Instance.ActiveJobList as IList<Job>);
         }
 
         public ICommand AddPartWindowCommand => _addPartWindowCommand = new RelayCommand<object>(_ => NewAddPartWindow());
@@ -100,7 +97,7 @@ namespace ProductionScheduler.ViewModels {
 
         //TODO: Determine if there is a better way to control background color for press display buttons
         public string LargePressBackgroundColor {
-            get => _largePressBackgroundColor = GetBackgroundColor(LargePressJobs.IsPaused, LargePressJobs.IssueFlagged);
+            get => LargePressJobs != null ? GetBackgroundColor(LargePressJobs.IsPaused, LargePressJobs.IssueFlagged) : GetBackgroundColor();
             set {
                 _largePressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(LargePressJobs));
@@ -108,7 +105,7 @@ namespace ProductionScheduler.ViewModels {
         }
 
         public string SmallPressBackgroundColor {
-            get => _smallPressBackgroundColor = GetBackgroundColor(SmallPressJobs.IsPaused, SmallPressJobs.IssueFlagged);
+            get => SmallPressJobs != null ? GetBackgroundColor(SmallPressJobs.IsPaused, SmallPressJobs.IssueFlagged) : GetBackgroundColor();
             set {
                 _smallPressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(SmallPressJobs));
@@ -116,7 +113,7 @@ namespace ProductionScheduler.ViewModels {
         }
 
         public string LeftVacuumPressBackgroundColor {
-            get => _leftVacuumPressBackgroundColor = GetBackgroundColor(LeftVacuumPressJobs.IsPaused, LeftVacuumPressJobs.IssueFlagged);
+            get => LeftVacuumPressJobs != null ? GetBackgroundColor(LeftVacuumPressJobs.IsPaused, LeftVacuumPressJobs.IssueFlagged) : GetBackgroundColor();
             set {
                 _leftVacuumPressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(LeftVacuumPressJobs));
@@ -124,7 +121,7 @@ namespace ProductionScheduler.ViewModels {
         }
 
         public string RightVacuumPressBackgroundColor {
-            get => _rightVacuumPressBackgroundColor = GetBackgroundColor(RightVacuumPressJobs.IsPaused, RightVacuumPressJobs.IssueFlagged);
+            get => RightVacuumPressJobs != null ? GetBackgroundColor(RightVacuumPressJobs.IsPaused, RightVacuumPressJobs.IssueFlagged) : GetBackgroundColor();
             set {
                 _rightVacuumPressBackgroundColor = value;
                 NotifyOnPropertyChanged(nameof(RightVacuumPressJobs));
@@ -190,5 +187,8 @@ namespace ProductionScheduler.ViewModels {
                 backgroundColor = "#CCE0DC";
             return backgroundColor;
         }
+
+        private static string GetBackgroundColor() => "#CCE0DC";
+                         
     }
 }
