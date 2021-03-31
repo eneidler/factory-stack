@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>43D1352D1A2ADEDC4A19AB7E6E58F16639460074</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>776318894E3C3CD8A96BD7A770896346A8D108C1</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>ProductionScheduler_TemporaryKey.pfx</ManifestKeyFile>
